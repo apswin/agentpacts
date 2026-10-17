@@ -1,0 +1,57 @@
+{
+ "runs": 3,
+ "servers": [
+  {
+   "id": "hakanai",
+   "name": "agent-voice-mcp (local whisper.cpp)",
+   "command": "/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/servers/agent-voice-mcp/.venv/bin/python",
+   "args": [
+    "/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/servers/agent-voice-mcp/server.py"
+   ],
+   "env": {
+    "WHISPER_URL": "http://127.0.0.1:2022"
+   },
+   "tool": "transcribe",
+   "tool_args": {
+    "file_path": "{fixture}"
+   },
+   "repo": "https://github.com/hakanai-ai/agent-voice-mcp",
+   "backend": "whisper.cpp server, ggml-base (local)"
+  },
+  {
+   "id": "sanzaru",
+   "name": "sanzaru (OpenAI API)",
+   "command": "/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/servers/sanzaru/.venv/bin/sanzaru",
+   "args": [],
+   "cwd": "/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/servers/sanzaru",
+   "env": {
+    "SANZARU_MEDIA_PATH": "/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/media"
+   },
+   "tool": "transcribe_audio",
+   "tool_args": {
+    "file_path": "{fixture_name}"
+   },
+   "repo": "https://github.com/TJC-LP/sanzaru",
+   "backend": "OpenAI gpt-4o-mini-transcribe (API)"
+  },
+  {
+   "id": "localstt",
+   "name": "local-stt-mcp (whisper.cpp CLI, Node)",
+   "command": "/opt/homebrew/opt/node@18/bin/node",
+   "args": [
+    "--preserve-symlinks",
+    "--preserve-symlinks-main",
+    "/Users/apoorvamishra/agentpacts/servers/local-stt-mcp/mcp-server/dist/index.js"
+   ],
+   "env": {
+    "PATH": "/Users/apoorvamishra/.voicemode/services/whisper/build/bin:/opt/homebrew/opt/node@18/bin:/opt/homebrew/bin:/usr/bin:/bin"
+   },
+   "tool": "transcribe",
+   "tool_args": {
+    "audio_path": "{fixture}"
+   },
+   "repo": "https://github.com/SmartLittleApps/local-stt-mcp",
+   "backend": "whisper.cpp CLI, ggml-base.en (local)"
+  }
+ ]
+}

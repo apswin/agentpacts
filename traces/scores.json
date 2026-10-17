@@ -1,0 +1,327 @@
+{
+  "task_category": "transcription",
+  "suite": "transcription-v1",
+  "fixture": "fixture.wav, Standup, Oct 17.m4a, ops-review.m4a",
+  "fixture_desc": "3 tasks: noisy-accented (45s accented (en-IE) speech, phone-band filtered, background noise; names, numbers, jargon); voice-memo (36s two-speaker phone voice memo, AAC .m4a, real-world filename with a comma ('Standup, Oct 17.m4a')); long-meeting (10-minute four-speaker meeting, AAC .m4a, 60s silent lead-in and silent gaps (tests chunking and silence hallucination))",
+  "tasks": [
+    {
+      "id": "noisy-accented",
+      "desc": "45s accented (en-IE) speech, phone-band filtered, background noise; names, numbers, jargon",
+      "weight": 1
+    },
+    {
+      "id": "voice-memo",
+      "desc": "36s two-speaker phone voice memo, AAC .m4a, real-world filename with a comma ('Standup, Oct 17.m4a')",
+      "weight": 1
+    },
+    {
+      "id": "long-meeting",
+      "desc": "10-minute four-speaker meeting, AAC .m4a, 60s silent lead-in and silent gaps (tests chunking and silence hallucination)",
+      "weight": 1
+    }
+  ],
+  "method": "fixed harness invocation per server, server defaults, 3 tasks x 3 runs; task score = 10 * (0.6 * (1 - WER) + 0.4 * key-phrase recall) vs ground truth after Whisper EnglishTextNormalizer; failed runs score 0; server score = weighted mean over tasks, 95% CI over runs",
+  "scored_at": "2026-10-17T20:37:46.829386+00:00",
+  "servers": [
+    {
+      "id": "sanzaru",
+      "name": "sanzaru (OpenAI API)",
+      "repo": "https://github.com/TJC-LP/sanzaru",
+      "backend": "OpenAI gpt-4o-mini-transcribe (API)",
+      "score": 9.1,
+      "score_exact": 9.146584938641999,
+      "ci95": [
+        8.6,
+        9.7
+      ],
+      "score_range": [
+        8.9,
+        9.3
+      ],
+      "runs_completed": "9/9",
+      "wer": 0.052,
+      "keyphrase_recall": 0.865,
+      "missed_phrases": [],
+      "latency_s": 6.2,
+      "sample_transcript": "Good morning, this is Priya Iragunathan calling from Cubaneed's platform engineering at Ventrix Biologics. Our quarterly revenue came in at $47,300, which is about 12% below the Q3 forecast. The main issue was latency on the PostgreSQL replica in Frankfurt, where page 99 response times hit 800 milliseconds. Siobhan from the Dublin office suggested we migrate the idempotency keys to Redis and enable vector for the semantic search index. Before Thursday's board meeting, please confirm three things: First, the SOC 2 audit window closes on November 9th. Second, the anticoagulant trial data from Ma",
+      "errors": [],
+      "failed_tasks": [],
+      "tasks": {
+        "noisy-accented": {
+          "score": 8.5,
+          "score_exact": 8.464004579934164,
+          "runs_completed": "3/3",
+          "wer": 0.073,
+          "keyphrase_recall": 0.726,
+          "missed_phrases": [
+            "Priya Raghunathan",
+            "Zentrix Biologics",
+            "pgvector",
+            "Nguyen Thi Thanh"
+          ],
+          "latency_s": 4.9,
+          "sample_transcript": "Good morning, this is Priya Iragunathan calling from Cubaneed's platform engineering at Ventrix Biologics. Our quarterly revenue came in at $47,300, which is about 12% below the Q3 forecast. The main issue was latency on the PostgreSQL replica in Frankfurt, where page 99 response times hit 800 milliseconds. Siobhan from the Dublin office suggested we migrate the idempotency keys to Redis and enable vector for the semantic search index. Before Thursday's board meeting, please confirm three things: First, the SOC 2 audit window closes on November 9th. Second, the anticoagulant trial data from Ma",
+          "errors": []
+        },
+        "voice-memo": {
+          "score": 9.6,
+          "score_exact": 9.594104308390023,
+          "runs_completed": "3/3",
+          "wer": 0.031,
+          "keyphrase_recall": 0.945,
+          "missed_phrases": [],
+          "latency_s": 4.1,
+          "sample_transcript": "Quick stand-up notes before I forget. Marguerite finished the Stripe webhook retry logic yesterday, and it is now live in the Toronto region. Right. And the only blocker is the Okta SAML certificate, which expires on December 14th. Rahul said he would rotate it by Wednesday. Good. Also, the churn dashboard shows 231 cancellations last month, mostly from the Starter plan. I will pull the cohort analysis in Looker and share it in the growth channel. Can we push the Kafka upgrade to next sprint? Yes, let's move Kafka to sprint 42. That's everything. Talk tomorrow.",
+          "errors": []
+        },
+        "long-meeting": {
+          "score": 9.4,
+          "score_exact": 9.38164592760181,
+          "runs_completed": "3/3",
+          "wer": 0.052,
+          "keyphrase_recall": 0.923,
+          "missed_phrases": [
+            "Ingrid Solberg"
+          ],
+          "latency_s": 9.5,
+          "sample_transcript": "Okay, let's get started. This is the weekly operations review for the Halvorsen logistics account. I have Karen from finance, Moira from customer success, and Rishi from the platform team. The agenda today is the warehouse migration, the invoicing dispute, the on-call rotation, and the roadmap for the first quarter. Let's begin with the migration. Sure. We moved the Rotterdam warehouse onto the new inventory service on... Tuesday night. The Q took about four hours, which was longer than the two hours we planned, mostly because the barcode scanners needed a firmware update. We saw 312 orders qu",
+          "errors": []
+        }
+      }
+    },
+    {
+      "id": "hakanai",
+      "name": "agent-voice-mcp (local whisper.cpp)",
+      "repo": "https://github.com/hakanai-ai/agent-voice-mcp",
+      "backend": "whisper.cpp server, ggml-base (local)",
+      "score": 2.3,
+      "score_exact": 2.2955757120366393,
+      "ci95": [
+        2.3,
+        2.3
+      ],
+      "score_range": [
+        2.3,
+        2.3
+      ],
+      "runs_completed": "6/9",
+      "wer": 0.583,
+      "keyphrase_recall": 0.235,
+      "missed_phrases": [],
+      "latency_s": 3.5,
+      "sample_transcript": "Good morning, this is pre-Irugune of the calling from Cubanites platform engineering at Centrics Biologics. Our quarterly revenue came in at $47,300, which is about 12% below the Q3 forecast. The main issue was latency on the post-GRSQL replica in Frankfurt, where page 99 responds times hit 800 milleccans. Siappon from the Dublin office suggested we migrate the idempotency keys to a distant enabled vector for the semantic search index. Before Thursday's board meeting, please confirm three things. First, the SOC-2 audit window closes on November 9. Second, the anticoagulant trial data from Mass",
+      "errors": [
+        "tool error: Transcription error: Whisper error:"
+      ],
+      "failed_tasks": [
+        "voice-memo"
+      ],
+      "tasks": {
+        "noisy-accented": {
+          "score": 6.8,
+          "score_exact": 6.787462430227565,
+          "runs_completed": "3/3",
+          "wer": 0.182,
+          "keyphrase_recall": 0.471,
+          "missed_phrases": [
+            "Priya Raghunathan",
+            "Zentrix Biologics",
+            "PostgreSQL",
+            "eight hundred milliseconds",
+            "Siobhan",
+            "pgvector",
+            "Nguyen Thi Thanh",
+            "LoRA adapter",
+            "four four one nine"
+          ],
+          "latency_s": 2.6,
+          "sample_transcript": "Good morning, this is pre-Irugune of the calling from Cubanites platform engineering at Centrics Biologics. Our quarterly revenue came in at $47,300, which is about 12% below the Q3 forecast. The main issue was latency on the post-GRSQL replica in Frankfurt, where page 99 responds times hit 800 milleccans. Siappon from the Dublin office suggested we migrate the idempotency keys to a distant enabled vector for the semantic search index. Before Thursday's board meeting, please confirm three things. First, the SOC-2 audit window closes on November 9. Second, the anticoagulant trial data from Mass",
+          "errors": []
+        },
+        "voice-memo": {
+          "score": 0.0,
+          "score_exact": 0.0,
+          "runs_completed": "0/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [
+            "Marguerite",
+            "Stripe webhook",
+            "Toronto",
+            "Okta SAML",
+            "December fourteenth",
+            "Rahul",
+            "two hundred and thirty-one",
+            "Starter plan",
+            "cohort analysis",
+            "Looker",
+            "Kafka",
+            "sprint forty-two"
+          ],
+          "latency_s": null,
+          "sample_transcript": "",
+          "errors": [
+            "tool error: Transcription error: Whisper error:"
+          ]
+        },
+        "long-meeting": {
+          "score": 0.1,
+          "score_exact": 0.09926470588235325,
+          "runs_completed": "3/3",
+          "wer": 0.983,
+          "keyphrase_recall": 0.0,
+          "missed_phrases": [
+            "Halvorsen Logistics",
+            "Rotterdam",
+            "three hundred and twelve",
+            "Zebra",
+            "one and a half percent",
+            "three thousand eight hundred euros",
+            "Ingrid Solberg",
+            "pallet tracking",
+            "Gothenburg",
+            "eleven thousand four hundred and fifty euros",
+            "four point seven",
+            "Amsterdam",
+            "Singapore",
+            "follow-the-sun",
+            "Lisbon",
+            "four hundred dollars",
+            "Microsoft Entra",
+            "Splunk",
+            "tombstoning",
+            "twenty-first",
+            "forty-one thousand dollars",
+            "BigQuery",
+            "Parquet",
+            "Stockholm",
+            "net promoter score",
+            "forty-four"
+          ],
+          "latency_s": 4.3,
+          "sample_transcript": "[2 chunks] [silence] [silence] [silence] [silence] [silence] [silence] [silence] [silence] [silence] [silence] [silence] [silence] [silence] [silence] [silence] [silence] [silence] [silence] [silence] [silence] document, and I will update the road map slide for the board. Anything else? No? Okay. Thanks everyone. Talk next week.",
+          "errors": []
+        }
+      }
+    },
+    {
+      "id": "localstt",
+      "name": "local-stt-mcp (whisper.cpp CLI, Node)",
+      "repo": "https://github.com/SmartLittleApps/local-stt-mcp",
+      "backend": "whisper.cpp CLI, ggml-base.en (local)",
+      "score": 2.2,
+      "score_exact": 2.218691856304566,
+      "ci95": [
+        2.2,
+        2.2
+      ],
+      "score_range": [
+        2.2,
+        2.2
+      ],
+      "runs_completed": "3/9",
+      "wer": 0.204,
+      "keyphrase_recall": 0.471,
+      "missed_phrases": [],
+      "latency_s": 1.6,
+      "sample_transcript": "Good morning, this is pre-irrogative and calling from Cuban Eats platform engineering at Zentrix by-logics. Our quarterly revenue came in at $47,300, which is about 12% below the Q3 forecast. The main issue was latency on the Postgres QL replica in Frankfurt, where page 99 responds times hit 800 milliseconds. Sayapun from the Dublin office suggested we migrate the idempotency keys to Rediscent enabled vector for the semantic search index. Before Thursday's board meeting, please confirm three things. First, the Sock 2 audit window closes on November 9. Second, the anticoagulant trial data from ",
+      "errors": [
+        "McpError: MCP error -32603: Tool execution failed: Transcription failed: Transcription failed: Whisper process failed: read_audio_data: reading audio data from '/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/long-meeting/ops-review.m4a' ...\nread_audio_data: trying to decode with miniau",
+        "McpError: MCP error -32603: Tool execution failed: Transcription failed: Transcription failed: Whisper process failed: read_audio_data: reading audio data from '/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/voice-memo/Standup, Oct 17.m4a' ...\nread_audio_data: trying to decode with min"
+      ],
+      "failed_tasks": [
+        "voice-memo",
+        "long-meeting"
+      ],
+      "tasks": {
+        "noisy-accented": {
+          "score": 6.7,
+          "score_exact": 6.656075568913698,
+          "runs_completed": "3/3",
+          "wer": 0.204,
+          "keyphrase_recall": 0.471,
+          "missed_phrases": [
+            "Priya Raghunathan",
+            "Zentrix Biologics",
+            "PostgreSQL",
+            "Siobhan",
+            "pgvector",
+            "SOC 2",
+            "Nguyen Thi Thanh",
+            "LoRA adapter",
+            "four four one nine"
+          ],
+          "latency_s": 1.6,
+          "sample_transcript": "Good morning, this is pre-irrogative and calling from Cuban Eats platform engineering at Zentrix by-logics. Our quarterly revenue came in at $47,300, which is about 12% below the Q3 forecast. The main issue was latency on the Postgres QL replica in Frankfurt, where page 99 responds times hit 800 milliseconds. Sayapun from the Dublin office suggested we migrate the idempotency keys to Rediscent enabled vector for the semantic search index. Before Thursday's board meeting, please confirm three things. First, the Sock 2 audit window closes on November 9. Second, the anticoagulant trial data from ",
+          "errors": []
+        },
+        "voice-memo": {
+          "score": 0.0,
+          "score_exact": 0.0,
+          "runs_completed": "0/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [
+            "Marguerite",
+            "Stripe webhook",
+            "Toronto",
+            "Okta SAML",
+            "December fourteenth",
+            "Rahul",
+            "two hundred and thirty-one",
+            "Starter plan",
+            "cohort analysis",
+            "Looker",
+            "Kafka",
+            "sprint forty-two"
+          ],
+          "latency_s": null,
+          "sample_transcript": "",
+          "errors": [
+            "McpError: MCP error -32603: Tool execution failed: Transcription failed: Transcription failed: Whisper process failed: read_audio_data: reading audio data from '/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/voice-memo/Standup, Oct 17.m4a' ...\nread_audio_data: trying to decode with min"
+          ]
+        },
+        "long-meeting": {
+          "score": 0.0,
+          "score_exact": 0.0,
+          "runs_completed": "0/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [
+            "Halvorsen Logistics",
+            "Rotterdam",
+            "three hundred and twelve",
+            "Zebra",
+            "one and a half percent",
+            "three thousand eight hundred euros",
+            "Ingrid Solberg",
+            "pallet tracking",
+            "Gothenburg",
+            "eleven thousand four hundred and fifty euros",
+            "four point seven",
+            "Amsterdam",
+            "Singapore",
+            "follow-the-sun",
+            "Lisbon",
+            "four hundred dollars",
+            "Microsoft Entra",
+            "Splunk",
+            "tombstoning",
+            "twenty-first",
+            "forty-one thousand dollars",
+            "BigQuery",
+            "Parquet",
+            "Stockholm",
+            "net promoter score",
+            "forty-four"
+          ],
+          "latency_s": null,
+          "sample_transcript": "",
+          "errors": [
+            "McpError: MCP error -32603: Tool execution failed: Transcription failed: Transcription failed: Whisper process failed: read_audio_data: reading audio data from '/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/long-meeting/ops-review.m4a' ...\nread_audio_data: trying to decode with miniau"
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,280 @@
+{
+  "server": {
+    "id": "localstt",
+    "name": "local-stt-mcp (whisper.cpp CLI, Node)",
+    "command": "/opt/homebrew/opt/node@18/bin/node",
+    "args": [
+      "--preserve-symlinks",
+      "--preserve-symlinks-main",
+      "/Users/apoorvamishra/agentpacts/servers/local-stt-mcp/mcp-server/dist/index.js"
+    ],
+    "env": {
+      "PATH": "/Users/apoorvamishra/.voicemode/services/whisper/build/bin:/opt/homebrew/opt/node@18/bin:/opt/homebrew/bin:/usr/bin:/bin"
+    },
+    "tool": "transcribe",
+    "tool_args": {
+      "audio_path": "{fixture}"
+    },
+    "repo": "https://github.com/SmartLittleApps/local-stt-mcp",
+    "backend": "whisper.cpp CLI, ggml-base.en (local)"
+  },
+  "runs": {
+    "noisy-accented": [
+      {
+        "ok": true,
+        "transcript": "Good morning, this is pre-irrogative and calling from Cuban Eats platform engineering at Zentrix by-logics. Our quarterly revenue came in at $47,300, which is about 12% below the Q3 forecast. The main issue was latency on the Postgres QL replica in Frankfurt, where page 99 responds times hit 800 milliseconds. Sayapun from the Dublin office suggested we migrate the idempotency keys to Rediscent enabled vector for the semantic search index. Before Thursday's board meeting, please confirm three things. First, the Sock 2 audit window closes on November 9. Second, the anticoagulant trial data from Massachusetts general must be dead identified under HIPAA. Third, GUY and FIFAN will present the llama fine-tuning results, including the Laura Dr. Benchmucks. If anything slips, ping me on Slack or call extension 4-4-1-9. Thanks, and let's keep the momentum going.",
+        "raw": "{\n  \"transcription\": \"[00:00:00.000 --> 00:00:04.740]   Good morning, this is pre-irrogative and calling from Cuban Eats platform engineering at Zentrix by-logics.\\n[00:00:04.740 --> 00:00:10.680]   Our quarterly revenue came in at $47,300, which is about 12% below the Q3 forecast.\\n[00:00:10.680 --> 00:00:17.160]   The main issue was latency on the Postgres QL replica in Frankfurt, where page 99 responds times hit 800 milliseconds.\\n[00:00:17.160 --> 00:00:22.820]   Sayapun from the Dublin office suggested we migrate the idempotency keys to Rediscent enabled vector for the semantic search index.\\n[00:00:22.820 --> 00:00:25.680]   Before Thursday's board meeting, please confirm three things.\\n[00:00:25.680 --> 00:00:28.720]   First, the Sock 2 audit window closes on November 9.\\n[00:00:28.720 --> 00:00:34.000]   Second, the anticoagulant trial data from Massachusetts general must be dead identified under HIPAA.\\n[00:00:34.000 --> 00:00:39.080]   Third, GUY and FIFAN will present the llama fine-tuning results, including the Laura Dr. Benchmucks.\\n[00:00:39.080 --> 00:00:42.700]   If anything slips, ping me on Slack or call extension 4-4-1-9.\\n[00:00:42.700 --> 00:00:44.800]   Thanks, and let's keep the momentum going.\",\n  \"metadata\": {\n    \"model_used\": \"base.en\",\n    \"language\": \"en\",\n    \"processing_time\": 1687,\n    \"format_converted\": false,\n    \"original_format\": \"wav\"\n  }\n}",
+        "latency_s": 1.9,
+        "tool_args": {
+          "audio_path": "/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/noisy-accented/fixture.wav"
+        },
+        "wer": 0.204,
+        "accuracy": 0.796,
+        "keyphrase_recall": 0.471,
+        "missed_phrases": [
+          "Priya Raghunathan",
+          "Zentrix Biologics",
+          "PostgreSQL",
+          "Siobhan",
+          "pgvector",
+          "SOC 2",
+          "Nguyen Thi Thanh",
+          "LoRA adapter",
+          "four four one nine"
+        ],
+        "score": 6.656075568913698
+      },
+      {
+        "ok": true,
+        "transcript": "Good morning, this is pre-irrogative and calling from Cuban Eats platform engineering at Zentrix by-logics. Our quarterly revenue came in at $47,300, which is about 12% below the Q3 forecast. The main issue was latency on the Postgres QL replica in Frankfurt, where page 99 responds times hit 800 milliseconds. Sayapun from the Dublin office suggested we migrate the idempotency keys to Rediscent enabled vector for the semantic search index. Before Thursday's board meeting, please confirm three things. First, the Sock 2 audit window closes on November 9. Second, the anticoagulant trial data from Massachusetts general must be dead identified under HIPAA. Third, GUY and FIFAN will present the llama fine-tuning results, including the Laura Dr. Benchmucks. If anything slips, ping me on Slack or call extension 4-4-1-9. Thanks, and let's keep the momentum going.",
+        "raw": "{\n  \"transcription\": \"[00:00:00.000 --> 00:00:04.740]   Good morning, this is pre-irrogative and calling from Cuban Eats platform engineering at Zentrix by-logics.\\n[00:00:04.740 --> 00:00:10.680]   Our quarterly revenue came in at $47,300, which is about 12% below the Q3 forecast.\\n[00:00:10.680 --> 00:00:17.160]   The main issue was latency on the Postgres QL replica in Frankfurt, where page 99 responds times hit 800 milliseconds.\\n[00:00:17.160 --> 00:00:22.820]   Sayapun from the Dublin office suggested we migrate the idempotency keys to Rediscent enabled vector for the semantic search index.\\n[00:00:22.820 --> 00:00:25.680]   Before Thursday's board meeting, please confirm three things.\\n[00:00:25.680 --> 00:00:28.720]   First, the Sock 2 audit window closes on November 9.\\n[00:00:28.720 --> 00:00:34.000]   Second, the anticoagulant trial data from Massachusetts general must be dead identified under HIPAA.\\n[00:00:34.000 --> 00:00:39.080]   Third, GUY and FIFAN will present the llama fine-tuning results, including the Laura Dr. Benchmucks.\\n[00:00:39.080 --> 00:00:42.700]   If anything slips, ping me on Slack or call extension 4-4-1-9.\\n[00:00:42.700 --> 00:00:44.800]   Thanks, and let's keep the momentum going.\",\n  \"metadata\": {\n    \"model_used\": \"base.en\",\n    \"language\": \"en\",\n    \"processing_time\": 1384,\n    \"format_converted\": false,\n    \"original_format\": \"wav\"\n  }\n}",
+        "latency_s": 1.5,
+        "tool_args": {
+          "audio_path": "/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/noisy-accented/fixture.wav"
+        },
+        "wer": 0.204,
+        "accuracy": 0.796,
+        "keyphrase_recall": 0.471,
+        "missed_phrases": [
+          "Priya Raghunathan",
+          "Zentrix Biologics",
+          "PostgreSQL",
+          "Siobhan",
+          "pgvector",
+          "SOC 2",
+          "Nguyen Thi Thanh",
+          "LoRA adapter",
+          "four four one nine"
+        ],
+        "score": 6.656075568913698
+      },
+      {
+        "ok": true,
+        "transcript": "Good morning, this is pre-irrogative and calling from Cuban Eats platform engineering at Zentrix by-logics. Our quarterly revenue came in at $47,300, which is about 12% below the Q3 forecast. The main issue was latency on the Postgres QL replica in Frankfurt, where page 99 responds times hit 800 milliseconds. Sayapun from the Dublin office suggested we migrate the idempotency keys to Rediscent enabled vector for the semantic search index. Before Thursday's board meeting, please confirm three things. First, the Sock 2 audit window closes on November 9. Second, the anticoagulant trial data from Massachusetts general must be dead identified under HIPAA. Third, GUY and FIFAN will present the llama fine-tuning results, including the Laura Dr. Benchmucks. If anything slips, ping me on Slack or call extension 4-4-1-9. Thanks, and let's keep the momentum going.",
+        "raw": "{\n  \"transcription\": \"[00:00:00.000 --> 00:00:04.740]   Good morning, this is pre-irrogative and calling from Cuban Eats platform engineering at Zentrix by-logics.\\n[00:00:04.740 --> 00:00:10.680]   Our quarterly revenue came in at $47,300, which is about 12% below the Q3 forecast.\\n[00:00:10.680 --> 00:00:17.160]   The main issue was latency on the Postgres QL replica in Frankfurt, where page 99 responds times hit 800 milliseconds.\\n[00:00:17.160 --> 00:00:22.820]   Sayapun from the Dublin office suggested we migrate the idempotency keys to Rediscent enabled vector for the semantic search index.\\n[00:00:22.820 --> 00:00:25.680]   Before Thursday's board meeting, please confirm three things.\\n[00:00:25.680 --> 00:00:28.720]   First, the Sock 2 audit window closes on November 9.\\n[00:00:28.720 --> 00:00:34.000]   Second, the anticoagulant trial data from Massachusetts general must be dead identified under HIPAA.\\n[00:00:34.000 --> 00:00:39.080]   Third, GUY and FIFAN will present the llama fine-tuning results, including the Laura Dr. Benchmucks.\\n[00:00:39.080 --> 00:00:42.700]   If anything slips, ping me on Slack or call extension 4-4-1-9.\\n[00:00:42.700 --> 00:00:44.800]   Thanks, and let's keep the momentum going.\",\n  \"metadata\": {\n    \"model_used\": \"base.en\",\n    \"language\": \"en\",\n    \"processing_time\": 1448,\n    \"format_converted\": false,\n    \"original_format\": \"wav\"\n  }\n}",
+        "latency_s": 1.5,
+        "tool_args": {
+          "audio_path": "/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/noisy-accented/fixture.wav"
+        },
+        "wer": 0.204,
+        "accuracy": 0.796,
+        "keyphrase_recall": 0.471,
+        "missed_phrases": [
+          "Priya Raghunathan",
+          "Zentrix Biologics",
+          "PostgreSQL",
+          "Siobhan",
+          "pgvector",
+          "SOC 2",
+          "Nguyen Thi Thanh",
+          "LoRA adapter",
+          "four four one nine"
+        ],
+        "score": 6.656075568913698
+      }
+    ],
+    "voice-memo": [
+      {
+        "ok": false,
+        "error": "McpError: MCP error -32603: Tool execution failed: Transcription failed: Transcription failed: Whisper process failed: read_audio_data: reading audio data from '/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/voice-memo/Standup, Oct 17.m4a' ...\nread_audio_data: trying to decode with miniaudio\nread_audio_data: failed to read audio data\nerror: failed to read audio file '/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/voice-memo/Standup, Oct 17.m4a'\nerror: 1 input file(s) failed\n",
+        "tool_args": {
+          "audio_path": "/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/voice-memo/Standup, Oct 17.m4a"
+        },
+        "latency_s": 0.3,
+        "transcript": "",
+        "score": 0.0
+      },
+      {
+        "ok": false,
+        "error": "McpError: MCP error -32603: Tool execution failed: Transcription failed: Transcription failed: Whisper process failed: read_audio_data: reading audio data from '/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/voice-memo/Standup, Oct 17.m4a' ...\nread_audio_data: trying to decode with miniaudio\nread_audio_data: failed to read audio data\nerror: failed to read audio file '/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/voice-memo/Standup, Oct 17.m4a'\nerror: 1 input file(s) failed\n",
+        "tool_args": {
+          "audio_path": "/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/voice-memo/Standup, Oct 17.m4a"
+        },
+        "latency_s": 0.2,
+        "transcript": "",
+        "score": 0.0
+      },
+      {
+        "ok": false,
+        "error": "McpError: MCP error -32603: Tool execution failed: Transcription failed: Transcription failed: Whisper process failed: read_audio_data: reading audio data from '/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/voice-memo/Standup, Oct 17.m4a' ...\nread_audio_data: trying to decode with miniaudio\nread_audio_data: failed to read audio data\nerror: failed to read audio file '/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/voice-memo/Standup, Oct 17.m4a'\nerror: 1 input file(s) failed\n",
+        "tool_args": {
+          "audio_path": "/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/voice-memo/Standup, Oct 17.m4a"
+        },
+        "latency_s": 0.3,
+        "transcript": "",
+        "score": 0.0
+      }
+    ],
+    "long-meeting": [
+      {
+        "ok": false,
+        "error": "McpError: MCP error -32603: Tool execution failed: Transcription failed: Transcription failed: Whisper process failed: read_audio_data: reading audio data from '/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/long-meeting/ops-review.m4a' ...\nread_audio_data: trying to decode with miniaudio\nread_audio_data: failed to read audio data\nerror: failed to read audio file '/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/long-meeting/ops-review.m4a'\nerror: 1 input file(s) failed\n",
+        "tool_args": {
+          "audio_path": "/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/long-meeting/ops-review.m4a"
+        },
+        "latency_s": 0.3,
+        "transcript": "",
+        "score": 0.0
+      },
+      {
+        "ok": false,
+        "error": "McpError: MCP error -32603: Tool execution failed: Transcription failed: Transcription failed: Whisper process failed: read_audio_data: reading audio data from '/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/long-meeting/ops-review.m4a' ...\nread_audio_data: trying to decode with miniaudio\nread_audio_data: failed to read audio data\nerror: failed to read audio file '/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/long-meeting/ops-review.m4a'\nerror: 1 input file(s) failed\n",
+        "tool_args": {
+          "audio_path": "/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/long-meeting/ops-review.m4a"
+        },
+        "latency_s": 0.3,
+        "transcript": "",
+        "score": 0.0
+      },
+      {
+        "ok": false,
+        "error": "McpError: MCP error -32603: Tool execution failed: Transcription failed: Transcription failed: Whisper process failed: read_audio_data: reading audio data from '/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/long-meeting/ops-review.m4a' ...\nread_audio_data: trying to decode with miniaudio\nread_audio_data: failed to read audio data\nerror: failed to read audio file '/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/long-meeting/ops-review.m4a'\nerror: 1 input file(s) failed\n",
+        "tool_args": {
+          "audio_path": "/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/long-meeting/ops-review.m4a"
+        },
+        "latency_s": 0.3,
+        "transcript": "",
+        "score": 0.0
+      }
+    ]
+  },
+  "summary": {
+    "id": "localstt",
+    "name": "local-stt-mcp (whisper.cpp CLI, Node)",
+    "repo": "https://github.com/SmartLittleApps/local-stt-mcp",
+    "backend": "whisper.cpp CLI, ggml-base.en (local)",
+    "score": 2.2,
+    "score_exact": 2.218691856304566,
+    "ci95": [
+      2.2,
+      2.2
+    ],
+    "score_range": [
+      2.2,
+      2.2
+    ],
+    "runs_completed": "3/9",
+    "wer": 0.204,
+    "keyphrase_recall": 0.471,
+    "missed_phrases": [],
+    "latency_s": 1.6,
+    "sample_transcript": "Good morning, this is pre-irrogative and calling from Cuban Eats platform engineering at Zentrix by-logics. Our quarterly revenue came in at $47,300, which is about 12% below the Q3 forecast. The main issue was latency on the Postgres QL replica in Frankfurt, where page 99 responds times hit 800 milliseconds. Sayapun from the Dublin office suggested we migrate the idempotency keys to Rediscent enabled vector for the semantic search index. Before Thursday's board meeting, please confirm three things. First, the Sock 2 audit window closes on November 9. Second, the anticoagulant trial data from ",
+    "errors": [
+      "McpError: MCP error -32603: Tool execution failed: Transcription failed: Transcription failed: Whisper process failed: read_audio_data: reading audio data from '/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/long-meeting/ops-review.m4a' ...\nread_audio_data: trying to decode with miniau",
+      "McpError: MCP error -32603: Tool execution failed: Transcription failed: Transcription failed: Whisper process failed: read_audio_data: reading audio data from '/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/voice-memo/Standup, Oct 17.m4a' ...\nread_audio_data: trying to decode with min"
+    ],
+    "failed_tasks": [
+      "voice-memo",
+      "long-meeting"
+    ],
+    "tasks": {
+      "noisy-accented": {
+        "score": 6.7,
+        "score_exact": 6.656075568913698,
+        "runs_completed": "3/3",
+        "wer": 0.204,
+        "keyphrase_recall": 0.471,
+        "missed_phrases": [
+          "Priya Raghunathan",
+          "Zentrix Biologics",
+          "PostgreSQL",
+          "Siobhan",
+          "pgvector",
+          "SOC 2",
+          "Nguyen Thi Thanh",
+          "LoRA adapter",
+          "four four one nine"
+        ],
+        "latency_s": 1.6,
+        "sample_transcript": "Good morning, this is pre-irrogative and calling from Cuban Eats platform engineering at Zentrix by-logics. Our quarterly revenue came in at $47,300, which is about 12% below the Q3 forecast. The main issue was latency on the Postgres QL replica in Frankfurt, where page 99 responds times hit 800 milliseconds. Sayapun from the Dublin office suggested we migrate the idempotency keys to Rediscent enabled vector for the semantic search index. Before Thursday's board meeting, please confirm three things. First, the Sock 2 audit window closes on November 9. Second, the anticoagulant trial data from ",
+        "errors": []
+      },
+      "voice-memo": {
+        "score": 0.0,
+        "score_exact": 0.0,
+        "runs_completed": "0/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [
+          "Marguerite",
+          "Stripe webhook",
+          "Toronto",
+          "Okta SAML",
+          "December fourteenth",
+          "Rahul",
+          "two hundred and thirty-one",
+          "Starter plan",
+          "cohort analysis",
+          "Looker",
+          "Kafka",
+          "sprint forty-two"
+        ],
+        "latency_s": null,
+        "sample_transcript": "",
+        "errors": [
+          "McpError: MCP error -32603: Tool execution failed: Transcription failed: Transcription failed: Whisper process failed: read_audio_data: reading audio data from '/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/voice-memo/Standup, Oct 17.m4a' ...\nread_audio_data: trying to decode with min"
+        ]
+      },
+      "long-meeting": {
+        "score": 0.0,
+        "score_exact": 0.0,
+        "runs_completed": "0/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [
+          "Halvorsen Logistics",
+          "Rotterdam",
+          "three hundred and twelve",
+          "Zebra",
+          "one and a half percent",
+          "three thousand eight hundred euros",
+          "Ingrid Solberg",
+          "pallet tracking",
+          "Gothenburg",
+          "eleven thousand four hundred and fifty euros",
+          "four point seven",
+          "Amsterdam",
+          "Singapore",
+          "follow-the-sun",
+          "Lisbon",
+          "four hundred dollars",
+          "Microsoft Entra",
+          "Splunk",
+          "tombstoning",
+          "twenty-first",
+          "forty-one thousand dollars",
+          "BigQuery",
+          "Parquet",
+          "Stockholm",
+          "net promoter score",
+          "forty-four"
+        ],
+        "latency_s": null,
+        "sample_transcript": "",
+        "errors": [
+          "McpError: MCP error -32603: Tool execution failed: Transcription failed: Transcription failed: Whisper process failed: read_audio_data: reading audio data from '/Users/apoorvamishra/Documents/Idea Zone/AgentPacts/fixtures/long-meeting/ops-review.m4a' ...\nread_audio_data: trying to decode with miniau"
+        ]
+      }
+    }
+  }
+}

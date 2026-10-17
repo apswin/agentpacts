@@ -1,0 +1,14 @@
+.env
+servers/
+media/
+node_modules/
+.venv/
+__pycache__/
+.tools/
+.DS_Store
+# stale intermediate outputs; traces/scores.json + traces/<server>.json are the record
+traces/partial.json
+traces/local_only.json
+traces/localstt_only.json
+traces/run.log
+fixtures/clean.wav

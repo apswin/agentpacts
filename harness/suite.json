@@ -1,0 +1,31 @@
+{
+  "suite": "transcription-v1",
+  "task_category": "transcription",
+  "runs": 3,
+  "tasks": [
+    {
+      "id": "noisy-accented",
+      "desc": "45s accented (en-IE) speech, phone-band filtered, background noise; names, numbers, jargon",
+      "fixture": "../fixtures/noisy-accented/fixture.wav",
+      "truth": "../fixtures/noisy-accented/truth.txt",
+      "key_phrases": "../fixtures/noisy-accented/key_phrases.txt",
+      "weight": 1
+    },
+    {
+      "id": "voice-memo",
+      "desc": "36s two-speaker phone voice memo, AAC .m4a, real-world filename with a comma ('Standup, Oct 17.m4a')",
+      "fixture": "../fixtures/voice-memo/Standup, Oct 17.m4a",
+      "truth": "../fixtures/voice-memo/truth.txt",
+      "key_phrases": "../fixtures/voice-memo/key_phrases.txt",
+      "weight": 1
+    },
+    {
+      "id": "long-meeting",
+      "desc": "10-minute four-speaker meeting, AAC .m4a, 60s silent lead-in and silent gaps (tests chunking and silence hallucination)",
+      "fixture": "../fixtures/long-meeting/ops-review.m4a",
+      "truth": "../fixtures/long-meeting/truth.txt",
+      "key_phrases": "../fixtures/long-meeting/key_phrases.txt",
+      "weight": 1
+    }
+  ]
+}
