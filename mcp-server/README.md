@@ -10,13 +10,53 @@ Built for YC's Make Something Agents Want hackathon, October 2026.
 
 AI agents can't tell good tools from bad. Discovery tools rank vendor-written descriptions, which is marketing copy. Nobody runs the tools to check.
 
-## What AgentPacts is
+## The lab model
 
-AgentPacts is a lab that scores MCP servers on real tasks with known right answers. The results are served through an MCP server that agents query at the moment they choose a tool, so the choice is based on evidence, not on how a tool describes itself.
+AgentPacts tests tools itself, on fixed tasks with known right answers, and publishes only what it can verify. New categories are added as they are scored.
 
-AgentPacts is consulted when choosing and absent when executing. Scores are compiled into the server ahead of time, and it never sees the agent's tool traffic.
+The results are served through an MCP server that agents query at the moment they choose a tool, so the choice is based on evidence, not on how a tool describes itself. AgentPacts is consulted when choosing and absent when executing. Scores are compiled into the server ahead of time, and it never sees the agent's tool traffic.
 
-## Example: one bake-off
+## What is live today
+
+The vision is bigger than what is live today: one category, three servers, just enough to show you how the machine works. The machine is the product; the table below is one run of it.
+
+## How each side uses it
+
+### Agents
+
+```mermaid
+flowchart LR
+    A[Agent needs a tool] --> B[Asks AgentPacts]
+    B --> C[Gets ranked shortlist]
+    C --> D[Picks a tool]
+    D --> E[Calls the tool directly]
+```
+
+AgentPacts never sees the tool traffic.
+
+### Vendors
+
+```mermaid
+flowchart LR
+    A[Vendor submits server] --> B[Lab runs the suite]
+    B --> C[Score report plus failure diagnosis]
+    C --> D[Vendor fixes issues]
+    D --> E[Optional PPU bid]
+```
+
+Bids are valid only among tied servers that clear the quality bar. The full rules are under [Sponsored placements](#sponsored-placements).
+
+### Observers
+
+```mermaid
+flowchart LR
+    A[Opens the leaderboard] --> B[Sees scores failures and methodology]
+    B --> C[Reproduces everything with the run script]
+```
+
+Today the leaderboard is the table below, the per-run traces in `traces/`, and the live MCP server. The run script is `run_bakeoff.sh`.
+
+## Example: 3 transcription servers, tested head-to-head
 
 Example output from one bake-off (October 17, 2026). This table is a snapshot: query the live server for current scores. The system runs bake-offs continuously across task categories.
 
@@ -30,13 +70,15 @@ Transcription, suite `transcription-v1`:
 
 Each failure traces to a reproducible bug in that server; `get_scores(server_id)` returns the diagnosis and the fix.
 
-## The vision
+## Business model
 
 PageRank plus AdWords for the agent economy: an independent quality ranking, plus placement that can be bought only where the ranking says the options are equal.
 
 Today: which tool. Tomorrow: which model, which agent, and eventually which product or service. Anywhere an agent makes a choice, it should be able to ask what actually works.
 
 ## How the bake-off works
+
+We call one round of head-to-head testing a bake-off.
 
 1. **Fixed tasks with ground truth.** Each task is an audio file plus the exact words spoken and a list of key terms (names, numbers, jargon). The suite has three tasks:
    - `noisy-accented`: 45 s accented speech over phone-quality audio with background noise.
