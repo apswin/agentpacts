@@ -1,10 +1,26 @@
 # AgentPacts
 
-AgentPacts tells AI agents which tool actually does the job. We test tools on real tasks with known right answers, and agents read the results before they choose — so the choice is based on evidence, not on how a tool describes itself.
+**Before an agent picks a tool, it should know whether the tool works. AgentPacts runs the tools so agents don't have to guess.**
+
+Built for YC's Make Something Agents Want hackathon, October 2026.
 
 **Live MCP server:** `https://fast-forge-ydikc.run.mcp-use.com/mcp` (tools: `search_tools`, `get_scores`, `list_categories`)
 
-## Current results — transcription (suite `transcription-v1`)
+## The problem
+
+AI agents can't tell good tools from bad. Discovery tools rank vendor-written descriptions, which is marketing copy. Nobody runs the tools to check.
+
+## What AgentPacts is
+
+AgentPacts is a lab that scores MCP servers on real tasks with known right answers. The results are served through an MCP server that agents query at the moment they choose a tool, so the choice is based on evidence, not on how a tool describes itself.
+
+AgentPacts is consulted when choosing and absent when executing. Scores are compiled into the server ahead of time, and it never sees the agent's tool traffic.
+
+## Example: one bake-off
+
+Example output from one bake-off (October 17, 2026). This table is a snapshot: query the live server for current scores. The system runs bake-offs continuously across task categories.
+
+Transcription, suite `transcription-v1`:
 
 | Server | Suite score | noisy-accented | voice-memo | long-meeting |
 |---|---|---|---|---|
@@ -14,15 +30,21 @@ AgentPacts tells AI agents which tool actually does the job. We test tools on re
 
 Each failure traces to a reproducible bug in that server; `get_scores(server_id)` returns the diagnosis and the fix.
 
+## The vision
+
+PageRank plus AdWords for the agent economy: an independent quality ranking, plus placement that can be bought only where the ranking says the options are equal.
+
+Today: which tool. Tomorrow: which model, which agent, and eventually which product or service. Anywhere an agent makes a choice, it should be able to ask what actually works.
+
 ## How the bake-off works
 
 1. **Fixed tasks with ground truth.** Each task is an audio file plus the exact words spoken and a list of key terms (names, numbers, jargon). The suite has three tasks:
-   - `noisy-accented` — 45 s accented speech over phone-quality audio with background noise.
-   - `voice-memo` — 36 s two-speaker phone memo (`.m4a`) with a real-world filename containing a comma.
-   - `long-meeting` — 10-minute four-speaker meeting (`.m4a`) with a silent lead-in and silent gaps.
+   - `noisy-accented`: 45 s accented speech over phone-quality audio with background noise.
+   - `voice-memo`: 36 s two-speaker phone memo (`.m4a`) with a real-world filename containing a comma.
+   - `long-meeting`: 10-minute four-speaker meeting (`.m4a`) with a silent lead-in and silent gaps.
 2. **Fixed harness.** Every server is called the same way, with its own default settings, through MCP over stdio. No LLM sits in the loop, so nothing varies between servers except the server.
 3. **Repeated runs.** Each server runs every task 3 times.
-4. **Scores baked into the server.** Results are compiled into the deployed MCP server as static data. AgentPacts is consulted when an agent chooses a tool and is absent when it uses it: it never sees the agent's tool traffic.
+4. **Scores baked into the server.** Results are compiled into the deployed MCP server as static data.
 
 ### Reproduce
 
@@ -37,15 +59,15 @@ Requirements: `uv`, Node 22+, ffmpeg, a local whisper.cpp server on port 2022 (`
 
 ## Metrics glossary
 
-- **WER (word error rate)** — the share of words the transcript gets wrong compared with what was actually said. Lower is better; 0.10 means about 1 word in 10 is wrong. Text is normalized first (OpenAI's Whisper normalizer), so "$47,300" and "forty-seven thousand three hundred" count as the same.
-- **Key-term recall** — the share of important names, numbers and jargon the transcript caught. Higher is better.
-- **Task score (0–10)** — `10 × (0.6 × (1 − WER) + 0.4 × key-term recall)`. 60% overall accuracy, 40% getting the details that matter.
+- **WER (word error rate):** the share of words the transcript gets wrong compared with what was actually said. Lower is better; 0.10 means about 1 word in 10 is wrong. Text is normalized first (OpenAI's Whisper normalizer), so "$47,300" and "forty-seven thousand three hundred" count as the same.
+- **Key-term recall:** the share of important names, numbers and jargon the transcript caught. Higher is better.
+- **Task score (0 to 10):** `10 × (0.6 × (1 − WER) + 0.4 × key-term recall)`. 60% overall accuracy, 40% getting the details that matter.
 - **Failed runs score 0.** A crash, timeout, empty result, or an error returned as text all count as a failed run, because reliability is part of quality.
-- **Runs** — how many of the attempts completed, e.g. `3/3`. `0/3` on a task means the server failed that task.
-- **Latency** — average seconds per completed call, including server start-up.
-- **Suite score** — the average of the task scores.
-- **95% CI (confidence interval)** — the likely range of the true score, based on the spread across runs. Local servers are deterministic, so their range is often a single number.
-- **Tie** — two scores less than 0.5 apart (or with overlapping confidence intervals at suite level). The difference isn't meaningful.
+- **Runs:** how many of the attempts completed, e.g. `3/3`. `0/3` on a task means the server failed that task.
+- **Latency:** average seconds per completed call, including server start-up.
+- **Suite score:** the average of the task scores.
+- **95% CI (confidence interval):** the likely range of the true score, based on the spread across runs. Local servers are deterministic, so their range is often a single number.
+- **Tie:** two scores less than 0.5 apart (or with overlapping confidence intervals at suite level). The difference isn't meaningful.
 
 ## Sponsored placements
 
