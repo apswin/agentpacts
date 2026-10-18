@@ -4,6 +4,8 @@
 
 Built for YC's Make Something Agents Want hackathon, October 2026.
 
+**Website:** [agentpacts.com](https://agentpacts.com) (overview and waitlist)
+
 **Live MCP server:** `https://fast-forge-ydikc.run.mcp-use.com/mcp` (tools: `search_tools`, `get_scores`, `list_categories`)
 
 ## The problem
