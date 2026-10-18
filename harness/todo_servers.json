@@ -1,0 +1,6 @@
+{"servers":[
+ {"id":"todoist","name":"Todoist (official @doist/todoist-mcp)","command":"/Users/apoorvamishra/agentpacts/servers/todo-mcp/node_modules/.bin/todoist-mcp","args":[],"env":{"TODOIST_API_KEY":"${TODOIST_API_TOKEN}"}},
+ {"id":"trello","name":"Trello (@delorenj/mcp-server-trello)","command":"/Users/apoorvamishra/agentpacts/servers/todo-mcp/node_modules/.bin/mcp-server-trello","args":[],"env":{"TRELLO_API_KEY":"${TRELLO_API_KEY}","TRELLO_TOKEN":"${TRELLO_TOKEN}"}},
+ {"id":"airtable","name":"Airtable (airtable-mcp-server)","command":"/Users/apoorvamishra/agentpacts/servers/todo-mcp/node_modules/.bin/airtable-mcp-server","args":[],"env":{"AIRTABLE_API_KEY":"${AIRTABLE_TOKEN}"}},
+ {"id":"notion","name":"Notion (official @notionhq/notion-mcp-server, local)","command":"/Users/apoorvamishra/agentpacts/servers/todo-mcp/node_modules/.bin/notion-mcp-server","args":[],"env":{"NOTION_TOKEN":"${NOTION_TOKEN}"}}
+]}

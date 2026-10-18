@@ -1,0 +1,657 @@
+{
+  "server": {
+    "id": "todoist",
+    "name": "Todoist (official @doist/todoist-mcp)",
+    "command": "/Users/apoorvamishra/agentpacts/servers/todo-mcp/node_modules/.bin/todoist-mcp",
+    "args": []
+  },
+  "runs": {
+    "create": [
+      {
+        "ok": true,
+        "latency_s": 3.0,
+        "steps": [
+          "create -> ['6hmxjXm3J7q2GjpP']",
+          "check 'listed with exact title': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 3.3,
+        "steps": [
+          "create -> ['6hmxjc4PJFjJwJCw']",
+          "check 'listed with exact title': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 3.0,
+        "steps": [
+          "create -> ['6hmxjcCh4fQ9GX3w']",
+          "check 'listed with exact title': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "list": [
+      {
+        "ok": true,
+        "latency_s": 3.3,
+        "steps": [
+          "create -> ['6hmxjcVH49Cgr3Jw']",
+          "check 'appears in list': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 3.1,
+        "steps": [
+          "create -> ['6hmxjcqXcqF833FP']",
+          "check 'appears in list': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 3.2,
+        "steps": [
+          "create -> ['6hmxjf4Rfwc327hw']",
+          "check 'appears in list': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "update": [
+      {
+        "ok": true,
+        "latency_s": 3.0,
+        "steps": [
+          "create -> ['6hmxjfHg8rFcQgcw']",
+          "check 'new title listed, old title gone': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 3.1,
+        "steps": [
+          "create -> ['6hmxjfgXMHC5jpQP']",
+          "check 'new title listed, old title gone': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 3.2,
+        "steps": [
+          "create -> ['6hmxjg26m7vVHr6P']",
+          "check 'new title listed, old title gone': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "complete": [
+      {
+        "ok": true,
+        "latency_s": 3.5,
+        "steps": [
+          "create -> ['6hmxjgF76h7R5HCP']",
+          "check 'server reports complete': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 2.7,
+        "steps": [
+          "create -> ['6hmxjgV4X2c5w2rP']",
+          "check 'server reports complete': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 3.7,
+        "steps": [
+          "create -> ['6hmxjgpQcjpqMJRw']",
+          "check 'server reports complete': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "delete": [
+      {
+        "ok": true,
+        "latency_s": 2.7,
+        "steps": [
+          "create -> ['6hmxjh65chJmRvpP']",
+          "check 'no longer listed': ok"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 2.2,
+        "steps": [
+          "create -> ['6hmxjhHX86fvCMhP']",
+          "check 'no longer listed': ok"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 2.7,
+        "steps": [
+          "create -> ['6hmxjhXjJmQq2HXw']",
+          "check 'no longer listed': ok"
+        ],
+        "error": null
+      }
+    ],
+    "messy-title": [
+      {
+        "ok": true,
+        "latency_s": 4.0,
+        "steps": [
+          "create -> ['6hmxjhqRWQMq5HjP']",
+          "check 'listed with exact title': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 3.6,
+        "steps": [
+          "create -> ['6hmxjj4fjpV4qwWP']",
+          "check 'listed with exact title': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 2.9,
+        "steps": [
+          "create -> ['6hmxjjQPC27wxMrP']",
+          "check 'listed with exact title': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "due-date": [
+      {
+        "ok": true,
+        "latency_s": 2.5,
+        "steps": [
+          "create -> ['6hmxjjh53xf5J6CP']",
+          "check 'due reads back as 2026-10-18T17:00:00-07:00 (got 2026-10-18T17:00:00)': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 2.8,
+        "steps": [
+          "create -> ['6hmxjjvqp8VRpqww']",
+          "check 'due reads back as 2026-10-18T17:00:00-07:00 (got 2026-10-18T17:00:00)': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 2.8,
+        "steps": [
+          "create -> ['6hmxjm9Mp76g7jgP']",
+          "check 'due reads back as 2026-10-18T17:00:00-07:00 (got 2026-10-18T17:00:00)': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "busy-list": [
+      {
+        "ok": true,
+        "latency_s": 1.5,
+        "steps": [
+          "check 'oldest of 30 items found with default page size': ok"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.3,
+        "steps": [
+          "check 'oldest of 30 items found with default page size': ok"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.5,
+        "steps": [
+          "check 'oldest of 30 items found with default page size': ok"
+        ],
+        "error": null
+      }
+    ],
+    "bulk-add": [
+      {
+        "ok": true,
+        "latency_s": 7.3,
+        "steps": [
+          "create -> ['6hmxjmm85wqvmG3P', '6hmxjmqhCVqw326w', '6hmxjp2mMcJj7vFP', '6hmxjp3qvXjwC2Ww', '6hmxjp38hgvxwRXP']",
+          "check 'all 5 listed': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 6.0,
+        "steps": [
+          "create -> ['6hmxjpVcvCjVcfVP', '6hmxjpQm864fmXQw', '6hmxjpXqpx539rgP', '6hmxjpWGq6V79PWw', '6hmxjphcF8rxWVJw']",
+          "check 'all 5 listed': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 6.1,
+        "steps": [
+          "create -> ['6hmxjq2MR3pMFH7w', '6hmxjq3x3hMVJJhw', '6hmxjq7vqVpfXjjP', '6hmxjq6pWCHm6gJw', '6hmxjq9W5rwfQRvw']",
+          "check 'all 5 listed': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "nlp-date": [
+      {
+        "ok": true,
+        "latency_s": 2.4,
+        "steps": [
+          "check ''tomorrow at 5pm' stored as 2026-10-18T17:00:00-07:00 (got 2026-10-18T17:00:00)': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 2.0,
+        "steps": [
+          "check ''tomorrow at 5pm' stored as 2026-10-18T17:00:00-07:00 (got 2026-10-18T17:00:00)': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 2.1,
+        "steps": [
+          "check ''tomorrow at 5pm' stored as 2026-10-18T17:00:00-07:00 (got 2026-10-18T17:00:00)': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "recurring": [
+      {
+        "ok": true,
+        "latency_s": 2.0,
+        "steps": [
+          "check 'stored as a recurring rule': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 2.3,
+        "steps": [
+          "check 'stored as a recurring rule': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.9,
+        "steps": [
+          "check 'stored as a recurring rule': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "search-by-description": [
+      {
+        "ok": true,
+        "latency_s": 12.8,
+        "steps": [
+          "check ''passport' search returns the target (2 results)': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 11.4,
+        "steps": [
+          "check ''passport' search returns the target (2 results)': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 10.8,
+        "steps": [
+          "check ''passport' search returns the target (2 results)': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "subtasks": [
+      {
+        "ok": true,
+        "latency_s": 4.2,
+        "steps": [
+          "check 'parent has exactly the 2 children (got ['Book flights [run-1-de9a]', 'Book hotel [run-1-de9a]'])': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 4.0,
+        "steps": [
+          "check 'parent has exactly the 2 children (got ['Book flights [run-2-cc9b]', 'Book hotel [run-2-cc9b]'])': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 4.2,
+        "steps": [
+          "check 'parent has exactly the 2 children (got ['Book flights [run-3-2934]', 'Book hotel [run-3-2934]'])': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "error-semantics": [
+      {
+        "ok": true,
+        "latency_s": 2.4,
+        "steps": [
+          "check 'completing a deleted item returns a clear error (isError=False, response='{\"completed\":[],\"failures\":[{\"item\":\"6hmxm2rwG7xChMJw\",\"error\":\"Task not found (HTTP 404, code 478, tag NOT_FOUND)\"}],\"t')': ok"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.9,
+        "steps": [
+          "check 'completing a deleted item returns a clear error (isError=False, response='{\"completed\":[],\"failures\":[{\"item\":\"6hmxm345M4xWPvQw\",\"error\":\"Task not found (HTTP 404, code 478, tag NOT_FOUND)\"}],\"t')': ok"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 2.1,
+        "steps": [
+          "check 'completing a deleted item returns a clear error (isError=False, response='{\"completed\":[],\"failures\":[{\"item\":\"6hmxm3GXc7rw2vRP\",\"error\":\"Task not found (HTTP 404, code 478, tag NOT_FOUND)\"}],\"t')': ok"
+        ],
+        "error": null
+      }
+    ],
+    "busy-list-newest": [
+      {
+        "ok": false,
+        "latency_s": 2.7,
+        "steps": [
+          "check 'newest item is in the default read': FAILED",
+          "teardown: clean"
+        ],
+        "error": "failed check: newest item is in the default read"
+      },
+      {
+        "ok": false,
+        "latency_s": 2.8,
+        "steps": [
+          "check 'newest item is in the default read': FAILED",
+          "teardown: clean"
+        ],
+        "error": "failed check: newest item is in the default read"
+      },
+      {
+        "ok": false,
+        "latency_s": 3.1,
+        "steps": [
+          "check 'newest item is in the default read': FAILED",
+          "teardown: clean"
+        ],
+        "error": "failed check: newest item is in the default read"
+      }
+    ]
+  },
+  "summary": {
+    "id": "todoist",
+    "name": "Todoist (official @doist/todoist-mcp)",
+    "repo": "",
+    "backend": "",
+    "score": 9.3,
+    "score_exact": 9.333333333333334,
+    "ci95": [
+      9.3,
+      9.3
+    ],
+    "score_range": [
+      9.3,
+      9.3
+    ],
+    "runs_completed": "42/45",
+    "wer": null,
+    "keyphrase_recall": 0,
+    "missed_phrases": [],
+    "latency_s": 3.7,
+    "sample_transcript": "",
+    "errors": [
+      "failed check: newest item is in the default read"
+    ],
+    "failed_tasks": [
+      "busy-list-newest"
+    ],
+    "tasks": {
+      "create": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 3.1,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "list": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 3.2,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "update": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 3.1,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "complete": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 3.3,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "delete": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 2.5,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "messy-title": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 3.5,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "due-date": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 2.7,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "busy-list": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 1.4,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "bulk-add": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 6.5,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "nlp-date": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 2.2,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "recurring": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 2.1,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "search-by-description": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 11.7,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "subtasks": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 4.1,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "error-semantics": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 2.1,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "busy-list-newest": {
+        "score": 0.0,
+        "score_exact": 0.0,
+        "runs_completed": "0/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": null,
+        "sample_transcript": "",
+        "errors": [
+          "failed check: newest item is in the default read"
+        ]
+      }
+    }
+  }
+}

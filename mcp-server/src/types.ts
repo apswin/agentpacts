@@ -39,6 +39,7 @@ export type Suite = {
   fixture_desc: string;
   method: string;
   scored_at: string;
+  scoring?: "pass_fail"; // absent = transcription-style WER scoring
   tasks?: { id: string; desc: string; weight: number }[];
   servers: Scored[];
 };

@@ -1,0 +1,656 @@
+{
+  "server": {
+    "id": "notion",
+    "name": "Notion (official @notionhq/notion-mcp-server, local)",
+    "command": "/Users/apoorvamishra/agentpacts/servers/todo-mcp/node_modules/.bin/notion-mcp-server",
+    "args": []
+  },
+  "runs": {
+    "create": [
+      {
+        "ok": true,
+        "latency_s": 1.3,
+        "steps": [
+          "create -> ['3fd18c8d-a372-811c-bbb0-f25b899dc0ff']",
+          "check 'listed with exact title': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.2,
+        "steps": [
+          "create -> ['3fd18c8d-a372-81f0-b3e0-e814109249a3']",
+          "check 'listed with exact title': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.0,
+        "steps": [
+          "create -> ['3fd18c8d-a372-81f3-8716-d7442604cea7']",
+          "check 'listed with exact title': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "list": [
+      {
+        "ok": true,
+        "latency_s": 1.0,
+        "steps": [
+          "create -> ['3fd18c8d-a372-81ee-811e-d1d0ff95a086']",
+          "check 'appears in list': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.1,
+        "steps": [
+          "create -> ['3fd18c8d-a372-814e-8d2b-db3e4b3831ca']",
+          "check 'appears in list': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.5,
+        "steps": [
+          "create -> ['3fd18c8d-a372-81c5-808f-e52cc143d24a']",
+          "check 'appears in list': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "update": [
+      {
+        "ok": true,
+        "latency_s": 5.1,
+        "steps": [
+          "create -> ['3fd18c8d-a372-8102-aa5a-f4cdc4268240']",
+          "check 'new title listed, old title gone': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.8,
+        "steps": [
+          "create -> ['3fd18c8d-a372-81fa-9dda-fc63b9fd9a75']",
+          "check 'new title listed, old title gone': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.3,
+        "steps": [
+          "create -> ['3fd18c8d-a372-8190-8c4c-db2cda90c5a5']",
+          "check 'new title listed, old title gone': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "complete": [
+      {
+        "ok": true,
+        "latency_s": 2.5,
+        "steps": [
+          "create -> ['3fd18c8d-a372-8113-bed5-c2c25679fd56']",
+          "check 'server reports complete': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 2.8,
+        "steps": [
+          "create -> ['3fd18c8d-a372-8144-bb40-fac1ac6c43b0']",
+          "check 'server reports complete': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.4,
+        "steps": [
+          "create -> ['3fd18c8d-a372-818d-9471-cbf24823dc95']",
+          "check 'server reports complete': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "delete": [
+      {
+        "ok": true,
+        "latency_s": 3.1,
+        "steps": [
+          "create -> ['3fd18c8d-a372-8167-bcad-def8a9ba0a65']",
+          "check 'no longer listed': ok"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.2,
+        "steps": [
+          "create -> ['3fd18c8d-a372-811f-91c7-d4ded48d7bef']",
+          "check 'no longer listed': ok"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.0,
+        "steps": [
+          "create -> ['3fd18c8d-a372-814c-a57c-c7d8a6685f47']",
+          "check 'no longer listed': ok"
+        ],
+        "error": null
+      }
+    ],
+    "messy-title": [
+      {
+        "ok": true,
+        "latency_s": 1.2,
+        "steps": [
+          "create -> ['3fd18c8d-a372-8145-b28e-cde0418001c6']",
+          "check 'listed with exact title': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.3,
+        "steps": [
+          "create -> ['3fd18c8d-a372-814d-9c7c-caffc0cdec7e']",
+          "check 'listed with exact title': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 3.2,
+        "steps": [
+          "create -> ['3fd18c8d-a372-8191-9def-cf7fd8d7868b']",
+          "check 'listed with exact title': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "due-date": [
+      {
+        "ok": true,
+        "latency_s": 1.1,
+        "steps": [
+          "create -> ['3fd18c8d-a372-81f3-b5b9-e999bd94f4ac']",
+          "check 'due reads back as 2026-10-18T17:00:00-07:00 (got 2026-10-18T17:00:00.000-07:00)': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 0.9,
+        "steps": [
+          "create -> ['3fd18c8d-a372-8116-a820-c81a90045561']",
+          "check 'due reads back as 2026-10-18T17:00:00-07:00 (got 2026-10-18T17:00:00.000-07:00)': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.6,
+        "steps": [
+          "create -> ['3fd18c8d-a372-817a-a8a4-e9ee679dfc11']",
+          "check 'due reads back as 2026-10-18T17:00:00-07:00 (got 2026-10-18T17:00:00.000-07:00)': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "busy-list": [
+      {
+        "ok": true,
+        "latency_s": 0.9,
+        "steps": [
+          "check 'oldest of 30 items found with default page size': ok"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 0.4,
+        "steps": [
+          "check 'oldest of 30 items found with default page size': ok"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 0.6,
+        "steps": [
+          "check 'oldest of 30 items found with default page size': ok"
+        ],
+        "error": null
+      }
+    ],
+    "bulk-add": [
+      {
+        "ok": true,
+        "latency_s": 6.0,
+        "steps": [
+          "create -> ['3fd18c8d-a372-817b-9485-f36497f9f9c3', '3fd18c8d-a372-815d-94f6-cae8639eaeb6', '3fd18c8d-a372-813c-bf6a-e08e26e0ab8b', '3fd18c8d-a372-813c-977a-d8a754f0f117', '3fd18c8d-a372-81ae-aa4d-c35e95810282']",
+          "check 'all 5 listed': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 6.5,
+        "steps": [
+          "create -> ['3fd18c8d-a372-813b-9ee7-d580a3b6636c', '3fd18c8d-a372-818a-a8ba-c7ee359e65b9', '3fd18c8d-a372-81d5-bb73-c27758073f01', '3fd18c8d-a372-8152-8069-d0a31c1e3307', '3fd18c8d-a372-813c-8168-d65ece4568b0']",
+          "check 'all 5 listed': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 4.5,
+        "steps": [
+          "create -> ['3fd18c8d-a372-81d7-b4f8-f17668656d6e', '3fd18c8d-a372-811a-a635-d003599cc4cf', '3fd18c8d-a372-810a-818f-d9b7350ea555', '3fd18c8d-a372-8157-b8c5-f892ee6f844b', '3fd18c8d-a372-81ce-9ef8-e1c8dbeeb49a']",
+          "check 'all 5 listed': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "nlp-date": [
+      {
+        "ok": false,
+        "latency_s": 0.3,
+        "steps": [],
+        "error": "ToolFailed: API-post-page error: {\"status\":400,\"object\":\"error\",\"code\":\"validation_error\",\"message\":\"body failed validation: body.properties.Deadline.date.start should be a valid ISO 8601 date string, instead was `\\\"tomorrow at 5pm\\\""
+      },
+      {
+        "ok": false,
+        "latency_s": 0.3,
+        "steps": [],
+        "error": "ToolFailed: API-post-page error: {\"status\":400,\"object\":\"error\",\"code\":\"validation_error\",\"message\":\"body failed validation: body.properties.Deadline.date.start should be a valid ISO 8601 date string, instead was `\\\"tomorrow at 5pm\\\""
+      },
+      {
+        "ok": false,
+        "latency_s": 0.2,
+        "steps": [],
+        "error": "ToolFailed: API-post-page error: {\"status\":400,\"object\":\"error\",\"code\":\"validation_error\",\"message\":\"body failed validation: body.properties.Deadline.date.start should be a valid ISO 8601 date string, instead was `\\\"tomorrow at 5pm\\\""
+      }
+    ],
+    "recurring": [
+      {
+        "ok": false,
+        "latency_s": 0.8,
+        "steps": [
+          "check 'stored as a recurring rule': FAILED",
+          "teardown: clean"
+        ],
+        "error": "failed check: stored as a recurring rule"
+      },
+      {
+        "ok": false,
+        "latency_s": 1.0,
+        "steps": [
+          "check 'stored as a recurring rule': FAILED",
+          "teardown: clean"
+        ],
+        "error": "failed check: stored as a recurring rule"
+      },
+      {
+        "ok": false,
+        "latency_s": 0.9,
+        "steps": [
+          "check 'stored as a recurring rule': FAILED",
+          "teardown: clean"
+        ],
+        "error": "failed check: stored as a recurring rule"
+      }
+    ],
+    "search-by-description": [
+      {
+        "ok": false,
+        "latency_s": 10.2,
+        "steps": [
+          "check ''passport' search returns the target (1 results)': FAILED",
+          "teardown: clean"
+        ],
+        "error": "failed check: 'passport' search returns the target (1 results)"
+      },
+      {
+        "ok": false,
+        "latency_s": 12.1,
+        "steps": [
+          "check ''passport' search returns the target (1 results)': FAILED",
+          "teardown: clean"
+        ],
+        "error": "failed check: 'passport' search returns the target (1 results)"
+      },
+      {
+        "ok": false,
+        "latency_s": 9.5,
+        "steps": [
+          "check ''passport' search returns the target (1 results)': FAILED",
+          "teardown: clean"
+        ],
+        "error": "failed check: 'passport' search returns the target (1 results)"
+      }
+    ],
+    "subtasks": [
+      {
+        "ok": true,
+        "latency_s": 4.4,
+        "steps": [
+          "check 'parent has exactly the 2 children (got ['Book flights [run-1-22f8]', 'Book hotel [run-1-22f8]'])': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 3.7,
+        "steps": [
+          "check 'parent has exactly the 2 children (got ['Book flights [run-2-453a]', 'Book hotel [run-2-453a]'])': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 3.9,
+        "steps": [
+          "check 'parent has exactly the 2 children (got ['Book flights [run-3-5230]', 'Book hotel [run-3-5230]'])': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "error-semantics": [
+      {
+        "ok": true,
+        "latency_s": 0.7,
+        "steps": [
+          "check 'completing a deleted item returns a clear error (isError=False, response='{\"status\":400,\"object\":\"error\",\"code\":\"validation_error\",\"message\":\"Can\\'t edit block that is archived. You must unarchiv')': ok"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.1,
+        "steps": [
+          "check 'completing a deleted item returns a clear error (isError=False, response='{\"status\":400,\"object\":\"error\",\"code\":\"validation_error\",\"message\":\"Can\\'t edit block that is archived. You must unarchiv')': ok"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 0.7,
+        "steps": [
+          "check 'completing a deleted item returns a clear error (isError=False, response='{\"status\":400,\"object\":\"error\",\"code\":\"validation_error\",\"message\":\"Can\\'t edit block that is archived. You must unarchiv')': ok"
+        ],
+        "error": null
+      }
+    ],
+    "busy-list-newest": [
+      {
+        "ok": true,
+        "latency_s": 1.2,
+        "steps": [
+          "check 'newest item is in the default read': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.3,
+        "steps": [
+          "check 'newest item is in the default read': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.3,
+        "steps": [
+          "check 'newest item is in the default read': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ]
+  },
+  "summary": {
+    "id": "notion",
+    "name": "Notion (official @notionhq/notion-mcp-server, local)",
+    "repo": "",
+    "backend": "",
+    "score": 8.0,
+    "score_exact": 8.0,
+    "ci95": [
+      8.0,
+      8.0
+    ],
+    "score_range": [
+      8.0,
+      8.0
+    ],
+    "runs_completed": "36/45",
+    "wer": null,
+    "keyphrase_recall": 0,
+    "missed_phrases": [],
+    "latency_s": 2.0,
+    "sample_transcript": "",
+    "errors": [
+      "ToolFailed: API-post-page error: {\"status\":400,\"object\":\"error\",\"code\":\"validation_error\",\"message\":\"body failed validation: body.properties.Deadline.date.start should be a valid ISO 8601 date string, instead was `\\\"tomorrow at 5pm\\\"",
+      "failed check: 'passport' search returns the target (1 results)",
+      "failed check: stored as a recurring rule"
+    ],
+    "failed_tasks": [
+      "nlp-date",
+      "recurring",
+      "search-by-description"
+    ],
+    "tasks": {
+      "create": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 1.2,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "list": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 1.2,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "update": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 2.7,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "complete": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 2.2,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "delete": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 1.8,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "messy-title": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 1.9,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "due-date": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 1.2,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "busy-list": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 0.6,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "bulk-add": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 5.7,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "nlp-date": {
+        "score": 0.0,
+        "score_exact": 0.0,
+        "runs_completed": "0/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": null,
+        "sample_transcript": "",
+        "errors": [
+          "ToolFailed: API-post-page error: {\"status\":400,\"object\":\"error\",\"code\":\"validation_error\",\"message\":\"body failed validation: body.properties.Deadline.date.start should be a valid ISO 8601 date string, instead was `\\\"tomorrow at 5pm\\\""
+        ]
+      },
+      "recurring": {
+        "score": 0.0,
+        "score_exact": 0.0,
+        "runs_completed": "0/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": null,
+        "sample_transcript": "",
+        "errors": [
+          "failed check: stored as a recurring rule"
+        ]
+      },
+      "search-by-description": {
+        "score": 0.0,
+        "score_exact": 0.0,
+        "runs_completed": "0/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": null,
+        "sample_transcript": "",
+        "errors": [
+          "failed check: 'passport' search returns the target (1 results)"
+        ]
+      },
+      "subtasks": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 4.0,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "error-semantics": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 0.8,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "busy-list-newest": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 1.3,
+        "sample_transcript": "",
+        "errors": []
+      }
+    }
+  }
+}

@@ -1,0 +1,652 @@
+{
+  "server": {
+    "id": "airtable",
+    "name": "Airtable (airtable-mcp-server)",
+    "command": "/Users/apoorvamishra/agentpacts/servers/todo-mcp/node_modules/.bin/airtable-mcp-server",
+    "args": []
+  },
+  "runs": {
+    "create": [
+      {
+        "ok": true,
+        "latency_s": 3.0,
+        "steps": [
+          "create -> ['recdFsKQn0fvtKKFm']",
+          "check 'listed with exact title': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.2,
+        "steps": [
+          "create -> ['recI72gq3CYOm6eRo']",
+          "check 'listed with exact title': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.2,
+        "steps": [
+          "create -> ['recvRYkyT5FZZufiy']",
+          "check 'listed with exact title': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "list": [
+      {
+        "ok": true,
+        "latency_s": 1.2,
+        "steps": [
+          "create -> ['recvc2CFa8wg3768K']",
+          "check 'appears in list': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.3,
+        "steps": [
+          "create -> ['rec2UU8DjmnPgp10W']",
+          "check 'appears in list': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.1,
+        "steps": [
+          "create -> ['recMnA9sYZzfAeCaB']",
+          "check 'appears in list': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "update": [
+      {
+        "ok": true,
+        "latency_s": 1.4,
+        "steps": [
+          "create -> ['rec7eVrKjd8sX6t0w']",
+          "check 'new title listed, old title gone': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.4,
+        "steps": [
+          "create -> ['recMgBkT9NOA8GOZC']",
+          "check 'new title listed, old title gone': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.4,
+        "steps": [
+          "create -> ['recFwT512WOp4zO1m']",
+          "check 'new title listed, old title gone': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "complete": [
+      {
+        "ok": true,
+        "latency_s": 1.4,
+        "steps": [
+          "create -> ['recUynxLMK2qONls1']",
+          "check 'server reports complete': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.4,
+        "steps": [
+          "create -> ['recS0EIDdYCOmgceV']",
+          "check 'server reports complete': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.3,
+        "steps": [
+          "create -> ['reckMAGz01nsJNR7R']",
+          "check 'server reports complete': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "delete": [
+      {
+        "ok": true,
+        "latency_s": 1.0,
+        "steps": [
+          "create -> ['rec8Gf4ZMhbtdSMqU']",
+          "check 'no longer listed': ok"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.0,
+        "steps": [
+          "create -> ['receVYrp9Hr1eupRC']",
+          "check 'no longer listed': ok"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.0,
+        "steps": [
+          "create -> ['recltUSJiiOxCJ0Cd']",
+          "check 'no longer listed': ok"
+        ],
+        "error": null
+      }
+    ],
+    "messy-title": [
+      {
+        "ok": true,
+        "latency_s": 1.1,
+        "steps": [
+          "create -> ['recn8UIBPSXtjK3CR']",
+          "check 'listed with exact title': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.1,
+        "steps": [
+          "create -> ['recyHHYNAYq3QoW1b']",
+          "check 'listed with exact title': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.4,
+        "steps": [
+          "create -> ['recjhhJw1PwJznRnr']",
+          "check 'listed with exact title': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "due-date": [
+      {
+        "ok": true,
+        "latency_s": 1.3,
+        "steps": [
+          "create -> ['rec4T2F4FdBW4vacS']",
+          "check 'due reads back as 2026-10-18T17:00:00-07:00 (got 2026-10-19T00:00:00.000Z)': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.1,
+        "steps": [
+          "create -> ['recyCnt7rNIcPnVcR']",
+          "check 'due reads back as 2026-10-18T17:00:00-07:00 (got 2026-10-19T00:00:00.000Z)': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.4,
+        "steps": [
+          "create -> ['recsm83kPCJ3ih6Mj']",
+          "check 'due reads back as 2026-10-18T17:00:00-07:00 (got 2026-10-19T00:00:00.000Z)': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "busy-list": [
+      {
+        "ok": true,
+        "latency_s": 0.7,
+        "steps": [
+          "check 'oldest of 30 items found with default page size': ok"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 0.7,
+        "steps": [
+          "check 'oldest of 30 items found with default page size': ok"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 0.8,
+        "steps": [
+          "check 'oldest of 30 items found with default page size': ok"
+        ],
+        "error": null
+      }
+    ],
+    "bulk-add": [
+      {
+        "ok": true,
+        "latency_s": 3.3,
+        "steps": [
+          "create -> ['recXE6ppsI1gUzHVs', 'recoPfCKd90Ljl14k', 'recLZxJQW4CKiqTdd', 'recJZMGPoGj0MxgKu', 'recV28tmPEUEOi6P1']",
+          "check 'all 5 listed': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 3.6,
+        "steps": [
+          "create -> ['reciO9K7sqC0xHbCb', 'recw9jmjK3LbG2xLW', 'recIErhc0ffjYIFrP', 'rec5jLpn5x2xhk5B0', 'recResu9IYxolGBom']",
+          "check 'all 5 listed': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 3.4,
+        "steps": [
+          "create -> ['recKoDUJmKtwX44Nv', 'recSddf8CfohN8MJ0', 'recwOiBFqb89c6XwC', 'recA2iee4Y5mz1XPD', 'recJCZiFQwN0Rqu8W']",
+          "check 'all 5 listed': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "nlp-date": [
+      {
+        "ok": false,
+        "latency_s": 0.6,
+        "steps": [],
+        "error": "ToolFailed: create_record error: Airtable API Error: Unprocessable Entity. Response: {\"error\":{\"type\":\"INVALID_VALUE_FOR_COLUMN\",\"message\":\"Cannot parse date value \\\"tomorrow at 5pm\\\" for field Due\"}}"
+      },
+      {
+        "ok": false,
+        "latency_s": 1.0,
+        "steps": [],
+        "error": "ToolFailed: create_record error: Airtable API Error: Unprocessable Entity. Response: {\"error\":{\"type\":\"INVALID_VALUE_FOR_COLUMN\",\"message\":\"Cannot parse date value \\\"tomorrow at 5pm\\\" for field Due\"}}"
+      },
+      {
+        "ok": false,
+        "latency_s": 0.8,
+        "steps": [],
+        "error": "ToolFailed: create_record error: Airtable API Error: Unprocessable Entity. Response: {\"error\":{\"type\":\"INVALID_VALUE_FOR_COLUMN\",\"message\":\"Cannot parse date value \\\"tomorrow at 5pm\\\" for field Due\"}}"
+      }
+    ],
+    "recurring": [
+      {
+        "ok": false,
+        "latency_s": 1.5,
+        "steps": [
+          "check 'stored as a recurring rule': FAILED",
+          "teardown: clean"
+        ],
+        "error": "failed check: stored as a recurring rule"
+      },
+      {
+        "ok": false,
+        "latency_s": 1.2,
+        "steps": [
+          "check 'stored as a recurring rule': FAILED",
+          "teardown: clean"
+        ],
+        "error": "failed check: stored as a recurring rule"
+      },
+      {
+        "ok": false,
+        "latency_s": 1.4,
+        "steps": [
+          "check 'stored as a recurring rule': FAILED",
+          "teardown: clean"
+        ],
+        "error": "failed check: stored as a recurring rule"
+      }
+    ],
+    "search-by-description": [
+      {
+        "ok": true,
+        "latency_s": 6.8,
+        "steps": [
+          "check ''passport' search returns the target (2 results)': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 6.7,
+        "steps": [
+          "check ''passport' search returns the target (2 results)': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 6.6,
+        "steps": [
+          "check ''passport' search returns the target (2 results)': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "subtasks": [
+      {
+        "ok": true,
+        "latency_s": 2.8,
+        "steps": [
+          "check 'parent has exactly the 2 children (got ['Book flights [run-1-483f]', 'Book hotel [run-1-483f]'])': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 2.8,
+        "steps": [
+          "check 'parent has exactly the 2 children (got ['Book flights [run-2-65aa]', 'Book hotel [run-2-65aa]'])': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 2.5,
+        "steps": [
+          "check 'parent has exactly the 2 children (got ['Book flights [run-3-0211]', 'Book hotel [run-3-0211]'])': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ],
+    "error-semantics": [
+      {
+        "ok": true,
+        "latency_s": 1.1,
+        "steps": [
+          "check 'completing a deleted item returns a clear error (isError=True, response='Airtable API Error: Unprocessable Entity. Response: {\"error\":{\"type\":\"ROW_DOES_NOT_EXIST\",\"message\":\"Record ID recioGZ7q')': ok"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.2,
+        "steps": [
+          "check 'completing a deleted item returns a clear error (isError=True, response='Airtable API Error: Unprocessable Entity. Response: {\"error\":{\"type\":\"ROW_DOES_NOT_EXIST\",\"message\":\"Record ID recY8sd9a')': ok"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.6,
+        "steps": [
+          "check 'completing a deleted item returns a clear error (isError=True, response='Airtable API Error: Unprocessable Entity. Response: {\"error\":{\"type\":\"ROW_DOES_NOT_EXIST\",\"message\":\"Record ID recSZUfaB')': ok"
+        ],
+        "error": null
+      }
+    ],
+    "busy-list-newest": [
+      {
+        "ok": true,
+        "latency_s": 1.3,
+        "steps": [
+          "check 'newest item is in the default read': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.4,
+        "steps": [
+          "check 'newest item is in the default read': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      },
+      {
+        "ok": true,
+        "latency_s": 1.3,
+        "steps": [
+          "check 'newest item is in the default read': ok",
+          "teardown: clean"
+        ],
+        "error": null
+      }
+    ]
+  },
+  "summary": {
+    "id": "airtable",
+    "name": "Airtable (airtable-mcp-server)",
+    "repo": "",
+    "backend": "",
+    "score": 8.7,
+    "score_exact": 8.666666666666666,
+    "ci95": [
+      8.7,
+      8.7
+    ],
+    "score_range": [
+      8.7,
+      8.7
+    ],
+    "runs_completed": "39/45",
+    "wer": null,
+    "keyphrase_recall": 0,
+    "missed_phrases": [],
+    "latency_s": 2.0,
+    "sample_transcript": "",
+    "errors": [
+      "ToolFailed: create_record error: Airtable API Error: Unprocessable Entity. Response: {\"error\":{\"type\":\"INVALID_VALUE_FOR_COLUMN\",\"message\":\"Cannot parse date value \\\"tomorrow at 5pm\\\" for field Due\"}}",
+      "failed check: stored as a recurring rule"
+    ],
+    "failed_tasks": [
+      "nlp-date",
+      "recurring"
+    ],
+    "tasks": {
+      "create": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 1.8,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "list": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 1.2,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "update": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 1.4,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "complete": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 1.4,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "delete": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 1.0,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "messy-title": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 1.2,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "due-date": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 1.3,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "busy-list": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 0.7,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "bulk-add": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 3.4,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "nlp-date": {
+        "score": 0.0,
+        "score_exact": 0.0,
+        "runs_completed": "0/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": null,
+        "sample_transcript": "",
+        "errors": [
+          "ToolFailed: create_record error: Airtable API Error: Unprocessable Entity. Response: {\"error\":{\"type\":\"INVALID_VALUE_FOR_COLUMN\",\"message\":\"Cannot parse date value \\\"tomorrow at 5pm\\\" for field Due\"}}"
+        ]
+      },
+      "recurring": {
+        "score": 0.0,
+        "score_exact": 0.0,
+        "runs_completed": "0/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": null,
+        "sample_transcript": "",
+        "errors": [
+          "failed check: stored as a recurring rule"
+        ]
+      },
+      "search-by-description": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 6.7,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "subtasks": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 2.7,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "error-semantics": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 1.3,
+        "sample_transcript": "",
+        "errors": []
+      },
+      "busy-list-newest": {
+        "score": 10.0,
+        "score_exact": 10.0,
+        "runs_completed": "3/3",
+        "wer": null,
+        "keyphrase_recall": 0,
+        "missed_phrases": [],
+        "latency_s": 1.3,
+        "sample_transcript": "",
+        "errors": []
+      }
+    }
+  }
+}

@@ -12,3 +12,4 @@ traces/local_only.json
 traces/localstt_only.json
 traces/run.log
 fixtures/clean.wav
+traces/todos_partial.json

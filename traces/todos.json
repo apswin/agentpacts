@@ -1,0 +1,900 @@
+{
+  "task_category": "todos",
+  "suite": "todos-v1",
+  "scoring": "pass_fail",
+  "fixture": "live test project/list/table per server",
+  "fixture_desc": "15 tasks: 5 basics (create, list, update, complete, delete), 4 edge cases (messy-title, due-date, busy-list, bulk-add), 6 agent-realism tasks (nlp-date, recurring, search-by-description, subtasks, error-semantics, busy-list-newest); each run creates and tears down its own items; busy-list tasks use a persistent 30-item fixture",
+  "tasks": [
+    {
+      "id": "create",
+      "desc": "add 'Buy milk [run-N]', verify it is listed with the exact title",
+      "weight": 1
+    },
+    {
+      "id": "list",
+      "desc": "list the test project, verify the created item appears",
+      "weight": 1
+    },
+    {
+      "id": "update",
+      "desc": "rename to 'Buy oat milk [run-N]', verify the new title (old title gone)",
+      "weight": 1
+    },
+    {
+      "id": "complete",
+      "desc": "mark it done, verify the server reports it complete",
+      "weight": 1
+    },
+    {
+      "id": "delete",
+      "desc": "delete it, verify it is no longer listed",
+      "weight": 1
+    },
+    {
+      "id": "messy-title",
+      "desc": "add a title with emoji, accent, ampersand, comma, quotes and angle brackets; verify it reads back exactly",
+      "weight": 1
+    },
+    {
+      "id": "due-date",
+      "desc": "add an item due tomorrow at 5pm (account timezone); verify the stored due date and time",
+      "weight": 1
+    },
+    {
+      "id": "busy-list",
+      "desc": "find the oldest of 30 items using the server's default list page size",
+      "weight": 1
+    },
+    {
+      "id": "bulk-add",
+      "desc": "add 5 items at once (bulk tool where the server has one); verify all 5 are listed",
+      "weight": 1
+    },
+    {
+      "id": "nlp-date",
+      "desc": "add 'Call dentist' with the date given as the phrase 'tomorrow at 5pm'; verify it is stored as tomorrow 17:00 (account timezone)",
+      "weight": 1
+    },
+    {
+      "id": "recurring",
+      "desc": "add 'Water plants every Monday'; PASS only if stored as a recurring rule (one-time item or error = FAIL)",
+      "weight": 1
+    },
+    {
+      "id": "search-by-description",
+      "desc": "seed 10 items including 'Renew passport before December'; search 'passport' with the server's search tool; verify the target is returned",
+      "weight": 1
+    },
+    {
+      "id": "subtasks",
+      "desc": "add 'Plan trip' with subtasks 'Book flights' and 'Book hotel'; verify the parent has exactly those 2 children",
+      "weight": 1
+    },
+    {
+      "id": "error-semantics",
+      "desc": "complete an item that was just deleted; PASS = clear error, FAIL = silent success or ambiguous response",
+      "weight": 1
+    },
+    {
+      "id": "busy-list-newest",
+      "desc": "add an item to a 30-item list; verify the newest item is in the default read",
+      "weight": 1
+    }
+  ],
+  "method": "fixed harness invocation per server, server defaults (including default list page sizes), 15 tasks x 3 runs; every check reads state back through the same MCP server; binary pass/fail per run (tool error, wrong end state, or leftover item after teardown = fail); task score = 10 x passed/runs; suite score = mean of task scores",
+  "scored_at": "2026-10-18T00:32:33.512570+00:00",
+  "servers": [
+    {
+      "id": "todoist",
+      "name": "Todoist (official @doist/todoist-mcp)",
+      "repo": "",
+      "backend": "",
+      "score": 9.3,
+      "score_exact": 9.333333333333334,
+      "ci95": [
+        9.3,
+        9.3
+      ],
+      "score_range": [
+        9.3,
+        9.3
+      ],
+      "runs_completed": "42/45",
+      "wer": null,
+      "keyphrase_recall": 0,
+      "missed_phrases": [],
+      "latency_s": 3.7,
+      "sample_transcript": "",
+      "errors": [
+        "failed check: newest item is in the default read"
+      ],
+      "failed_tasks": [
+        "busy-list-newest"
+      ],
+      "tasks": {
+        "create": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 3.1,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "list": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 3.2,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "update": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 3.1,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "complete": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 3.3,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "delete": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 2.5,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "messy-title": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 3.5,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "due-date": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 2.7,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "busy-list": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 1.4,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "bulk-add": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 6.5,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "nlp-date": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 2.2,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "recurring": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 2.1,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "search-by-description": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 11.7,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "subtasks": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 4.1,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "error-semantics": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 2.1,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "busy-list-newest": {
+          "score": 0.0,
+          "score_exact": 0.0,
+          "runs_completed": "0/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": null,
+          "sample_transcript": "",
+          "errors": [
+            "failed check: newest item is in the default read"
+          ]
+        }
+      }
+    },
+    {
+      "id": "airtable",
+      "name": "Airtable (airtable-mcp-server)",
+      "repo": "",
+      "backend": "",
+      "score": 8.7,
+      "score_exact": 8.666666666666666,
+      "ci95": [
+        8.7,
+        8.7
+      ],
+      "score_range": [
+        8.7,
+        8.7
+      ],
+      "runs_completed": "39/45",
+      "wer": null,
+      "keyphrase_recall": 0,
+      "missed_phrases": [],
+      "latency_s": 2.0,
+      "sample_transcript": "",
+      "errors": [
+        "ToolFailed: create_record error: Airtable API Error: Unprocessable Entity. Response: {\"error\":{\"type\":\"INVALID_VALUE_FOR_COLUMN\",\"message\":\"Cannot parse date value \\\"tomorrow at 5pm\\\" for field Due\"}}",
+        "failed check: stored as a recurring rule"
+      ],
+      "failed_tasks": [
+        "nlp-date",
+        "recurring"
+      ],
+      "tasks": {
+        "create": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 1.8,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "list": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 1.2,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "update": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 1.4,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "complete": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 1.4,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "delete": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 1.0,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "messy-title": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 1.2,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "due-date": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 1.3,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "busy-list": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 0.7,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "bulk-add": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 3.4,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "nlp-date": {
+          "score": 0.0,
+          "score_exact": 0.0,
+          "runs_completed": "0/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": null,
+          "sample_transcript": "",
+          "errors": [
+            "ToolFailed: create_record error: Airtable API Error: Unprocessable Entity. Response: {\"error\":{\"type\":\"INVALID_VALUE_FOR_COLUMN\",\"message\":\"Cannot parse date value \\\"tomorrow at 5pm\\\" for field Due\"}}"
+          ]
+        },
+        "recurring": {
+          "score": 0.0,
+          "score_exact": 0.0,
+          "runs_completed": "0/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": null,
+          "sample_transcript": "",
+          "errors": [
+            "failed check: stored as a recurring rule"
+          ]
+        },
+        "search-by-description": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 6.7,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "subtasks": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 2.7,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "error-semantics": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 1.3,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "busy-list-newest": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 1.3,
+          "sample_transcript": "",
+          "errors": []
+        }
+      }
+    },
+    {
+      "id": "trello",
+      "name": "Trello (@delorenj/mcp-server-trello)",
+      "repo": "",
+      "backend": "",
+      "score": 8.0,
+      "score_exact": 8.0,
+      "ci95": [
+        8.0,
+        8.0
+      ],
+      "score_range": [
+        8.0,
+        8.0
+      ],
+      "runs_completed": "36/45",
+      "wer": null,
+      "keyphrase_recall": 0,
+      "missed_phrases": [],
+      "latency_s": 2.9,
+      "sample_transcript": "",
+      "errors": [
+        "ToolFailed: add_card_to_list error: Error: MCP error -32603: Trello API Error: 400 Request failed with status code 400",
+        "failed check: completing a deleted item returns a clear error (isError=False, response='{\\n  \"id\": \"6ad412ccef3cd534aad7878c\",\\n  \"agent\": null,\\n  \"badges\": {\\n    \"attachments\": 0,\\n    \"fogbugz\": \"\",\\n    \"check')",
+        "failed check: completing a deleted item returns a clear error (isError=False, response='{\\n  \"id\": \"6ad412cf53f15578e8faa896\",\\n  \"agent\": null,\\n  \"badges\": {\\n    \"attachments\": 0,\\n    \"fogbugz\": \"\",\\n    \"check')",
+        "failed check: completing a deleted item returns a clear error (isError=False, response='{\\n  \"id\": \"6ad412d2b1dee2ef013adf03\",\\n  \"agent\": null,\\n  \"badges\": {\\n    \"attachments\": 0,\\n    \"fogbugz\": \"\",\\n    \"check')",
+        "failed check: stored as a recurring rule"
+      ],
+      "failed_tasks": [
+        "nlp-date",
+        "recurring",
+        "error-semantics"
+      ],
+      "tasks": {
+        "create": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 1.6,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "list": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 1.7,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "update": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 1.9,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "complete": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 1.9,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "delete": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 1.0,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "messy-title": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 1.5,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "due-date": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 1.6,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "busy-list": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 0.4,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "bulk-add": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 6.4,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "nlp-date": {
+          "score": 0.0,
+          "score_exact": 0.0,
+          "runs_completed": "0/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": null,
+          "sample_transcript": "",
+          "errors": [
+            "ToolFailed: add_card_to_list error: Error: MCP error -32603: Trello API Error: 400 Request failed with status code 400"
+          ]
+        },
+        "recurring": {
+          "score": 0.0,
+          "score_exact": 0.0,
+          "runs_completed": "0/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": null,
+          "sample_transcript": "",
+          "errors": [
+            "failed check: stored as a recurring rule"
+          ]
+        },
+        "search-by-description": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 12.1,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "subtasks": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 2.8,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "error-semantics": {
+          "score": 0.0,
+          "score_exact": 0.0,
+          "runs_completed": "0/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": null,
+          "sample_transcript": "",
+          "errors": [
+            "failed check: completing a deleted item returns a clear error (isError=False, response='{\\n  \"id\": \"6ad412ccef3cd534aad7878c\",\\n  \"agent\": null,\\n  \"badges\": {\\n    \"attachments\": 0,\\n    \"fogbugz\": \"\",\\n    \"check')",
+            "failed check: completing a deleted item returns a clear error (isError=False, response='{\\n  \"id\": \"6ad412cf53f15578e8faa896\",\\n  \"agent\": null,\\n  \"badges\": {\\n    \"attachments\": 0,\\n    \"fogbugz\": \"\",\\n    \"check')",
+            "failed check: completing a deleted item returns a clear error (isError=False, response='{\\n  \"id\": \"6ad412d2b1dee2ef013adf03\",\\n  \"agent\": null,\\n  \"badges\": {\\n    \"attachments\": 0,\\n    \"fogbugz\": \"\",\\n    \"check')"
+          ]
+        },
+        "busy-list-newest": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 1.5,
+          "sample_transcript": "",
+          "errors": []
+        }
+      }
+    },
+    {
+      "id": "notion",
+      "name": "Notion (official @notionhq/notion-mcp-server, local)",
+      "repo": "",
+      "backend": "",
+      "score": 8.0,
+      "score_exact": 8.0,
+      "ci95": [
+        8.0,
+        8.0
+      ],
+      "score_range": [
+        8.0,
+        8.0
+      ],
+      "runs_completed": "36/45",
+      "wer": null,
+      "keyphrase_recall": 0,
+      "missed_phrases": [],
+      "latency_s": 2.0,
+      "sample_transcript": "",
+      "errors": [
+        "ToolFailed: API-post-page error: {\"status\":400,\"object\":\"error\",\"code\":\"validation_error\",\"message\":\"body failed validation: body.properties.Deadline.date.start should be a valid ISO 8601 date string, instead was `\\\"tomorrow at 5pm\\\"",
+        "failed check: 'passport' search returns the target (1 results)",
+        "failed check: stored as a recurring rule"
+      ],
+      "failed_tasks": [
+        "nlp-date",
+        "recurring",
+        "search-by-description"
+      ],
+      "tasks": {
+        "create": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 1.2,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "list": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 1.2,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "update": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 2.7,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "complete": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 2.2,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "delete": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 1.8,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "messy-title": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 1.9,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "due-date": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 1.2,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "busy-list": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 0.6,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "bulk-add": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 5.7,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "nlp-date": {
+          "score": 0.0,
+          "score_exact": 0.0,
+          "runs_completed": "0/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": null,
+          "sample_transcript": "",
+          "errors": [
+            "ToolFailed: API-post-page error: {\"status\":400,\"object\":\"error\",\"code\":\"validation_error\",\"message\":\"body failed validation: body.properties.Deadline.date.start should be a valid ISO 8601 date string, instead was `\\\"tomorrow at 5pm\\\""
+          ]
+        },
+        "recurring": {
+          "score": 0.0,
+          "score_exact": 0.0,
+          "runs_completed": "0/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": null,
+          "sample_transcript": "",
+          "errors": [
+            "failed check: stored as a recurring rule"
+          ]
+        },
+        "search-by-description": {
+          "score": 0.0,
+          "score_exact": 0.0,
+          "runs_completed": "0/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": null,
+          "sample_transcript": "",
+          "errors": [
+            "failed check: 'passport' search returns the target (1 results)"
+          ]
+        },
+        "subtasks": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 4.0,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "error-semantics": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 0.8,
+          "sample_transcript": "",
+          "errors": []
+        },
+        "busy-list-newest": {
+          "score": 10.0,
+          "score_exact": 10.0,
+          "runs_completed": "3/3",
+          "wer": null,
+          "keyphrase_recall": 0,
+          "missed_phrases": [],
+          "latency_s": 1.3,
+          "sample_transcript": "",
+          "errors": []
+        }
+      }
+    }
+  ]
+}

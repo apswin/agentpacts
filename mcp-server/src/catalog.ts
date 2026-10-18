@@ -48,6 +48,43 @@ export const CATALOG: Record<string, CatalogEntry> = {
       args: ["/abs/path/local-stt-mcp/mcp-server/dist/index.js"],
     },
   },
+  todoist: {
+    repo: "https://github.com/Doist/todoist-ai",
+    runs: "cloud-api",
+    cost: "free tier available (Todoist account)",
+    requires: ["TODOIST_API_KEY", "Node 18+"],
+    install: "claude mcp add todoist -e TODOIST_API_KEY=<your token> -- npx -y @doist/todoist-mcp",
+    mcp_config: { command: "npx", args: ["-y", "@doist/todoist-mcp"], env: { TODOIST_API_KEY: "<your token>" } },
+  },
+  trello: {
+    repo: "https://github.com/delorenj/mcp-server-trello",
+    runs: "cloud-api",
+    cost: "free tier available (Trello account)",
+    requires: ["TRELLO_API_KEY", "TRELLO_TOKEN", "Node 18+"],
+    install:
+      "claude mcp add trello -e TRELLO_API_KEY=<your key> -e TRELLO_TOKEN=<your token> -- npx -y @delorenj/mcp-server-trello",
+    mcp_config: {
+      command: "npx",
+      args: ["-y", "@delorenj/mcp-server-trello"],
+      env: { TRELLO_API_KEY: "<your key>", TRELLO_TOKEN: "<your token>" },
+    },
+  },
+  airtable: {
+    repo: "https://github.com/domdomegg/airtable-mcp-server",
+    runs: "cloud-api",
+    cost: "free tier available (Airtable account)",
+    requires: ["AIRTABLE_API_KEY (personal access token with data.records and schema.bases scopes)", "Node 18+"],
+    install: "claude mcp add airtable -e AIRTABLE_API_KEY=<your token> -- npx -y airtable-mcp-server",
+    mcp_config: { command: "npx", args: ["-y", "airtable-mcp-server"], env: { AIRTABLE_API_KEY: "<your token>" } },
+  },
+  notion: {
+    repo: "https://github.com/makenotion/notion-mcp-server",
+    runs: "cloud-api",
+    cost: "free tier available (Notion account)",
+    requires: ["NOTION_TOKEN (internal integration secret)", "pages shared with the integration", "Node 18+"],
+    install: "claude mcp add notion -e NOTION_TOKEN=<your secret> -- npx -y @notionhq/notion-mcp-server",
+    mcp_config: { command: "npx", args: ["-y", "@notionhq/notion-mcp-server"], env: { NOTION_TOKEN: "<your secret>" } },
+  },
 };
 
 // Root causes found by reading each failing run's trace and the server's source.
@@ -70,5 +107,28 @@ export const DIAGNOSES: Record<string, Record<string, string>> = {
       "Fix: parse args with TranscribeArgsSchema before calling the handler.",
     "long-meeting":
       "Same root cause as voice-memo: .m4a input is never converted unless the caller explicitly passes auto_convert=true.",
+  },
+  todoist: {
+    "busy-list-newest":
+      "find-tasks returns 10 items by default, oldest first; in a 31-item project the newest item is not in the first " +
+      "page. The response does report hasMore with a cursor, so an agent that pages through finds it.",
+  },
+  trello: {
+    "nlp-date": 'dueDate only accepts ISO 8601; the phrase "tomorrow at 5pm" is rejected with HTTP 400.',
+    recurring: "Trello cards have no recurrence field through this server; the item is stored as a one-time card.",
+    "error-semantics":
+      "This server has no delete tool, only archive. Moving an archived card to the Done list succeeds and returns " +
+      "the card, so an agent completing a deleted card is told it worked.",
+  },
+  airtable: {
+    "nlp-date": 'The Due field rejects "tomorrow at 5pm" ("Cannot parse date value"); dates must be ISO 8601.',
+    recurring: "Airtable has no recurrence field type; the item is stored as a one-time record.",
+  },
+  notion: {
+    "nlp-date": 'Date properties only accept ISO 8601; "tomorrow at 5pm" fails validation (HTTP 400).',
+    recurring: "Notion database pages have no recurrence property through the API; the item is stored as a one-time page.",
+    "search-by-description":
+      "Notion search is indexed asynchronously: a page created seconds earlier is not returned. In our diagnostic the " +
+      "page appeared between 10 and 30 seconds after creation.",
   },
 };

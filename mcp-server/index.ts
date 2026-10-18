@@ -28,6 +28,10 @@ const CATEGORY_KEYWORDS: Record<string, string[]> = {
     "transcrib", "speech", "audio", "voice", "whisper", "stt", "dictat", "recording",
     "meeting", "podcast", "interview", "subtitle", "caption", "spoken", "call",
   ],
+  todos: [
+    "todo", "to-do", "to do", "task", "reminder", "remind me", "checklist", "errand",
+    "grocery", "my list", "subtask", "due ", "recurring", "trello", "todoist", "notion", "airtable",
+  ],
 };
 
 // Within a category, map the agent's wording to the most specific suite task so
@@ -36,6 +40,22 @@ const SUITE_TASK_KEYWORDS: Record<string, string[]> = {
   "long-meeting": ["meeting", "long", "hour", "minute", "podcast", "interview", "lecture", "webinar", "call"],
   "voice-memo": ["memo", "voice note", "m4a", "iphone", "phone", "standup", "dictat"],
   "noisy-accented": ["noisy", "noise", "accent", "street", "background", "cafe", "crowd"],
+  // todos-v1 (more specific tasks first: on equal hits the earlier entry wins)
+  "busy-list-newest": ["just added", "newest", "latest", "most recent"],
+  "error-semantics": ["error", "stale", "already deleted", "doesn't exist", "does not exist"],
+  subtasks: ["subtask", "sub-task", "break down", "break it down"],
+  recurring: ["every ", "recurring", "repeat", "weekly", "daily", "monthly"],
+  "nlp-date": ["tomorrow", "tonight", "next week", "next monday", "at 5pm", "natural language"],
+  "search-by-description": ["find", "search", "look up", "which task"],
+  "bulk-add": ["bulk", "several", "multiple", "batch", "a bunch"],
+  "busy-list": ["busy", "long list", "lots of tasks", "many tasks"],
+  "messy-title": ["emoji", "special character", "accent mark", "unicode"],
+  "due-date": ["due", "deadline"],
+  complete: ["complete", "done", "finish", "check off", "mark"],
+  delete: ["delete", "remove"],
+  update: ["rename", "update", "edit", "change"],
+  list: ["list", "show", "what's on", "what is on"],
+  create: ["add", "create", "new "],
 };
 
 function matchSuiteTask(task: string, suite: Suite): string | null {
@@ -136,10 +156,31 @@ const fmtLatency = (v: number | null) => (v == null ? "latency n/a" : `latency $
 
 // One ranked row. When ranking by a suite task, the metrics row is THAT task's numbers;
 // suite-wide numbers appear only on the line labeled "suite".
-function fmtLine(i: number, s: Scored, taskId: string | null, long: boolean): string {
+const PASS_FAIL_LABEL = "binary pass/fail; each run's end state is read back through the server";
+const fmtPassed = (runs: string, long: boolean) => `passed ${runs} runs${long ? ` (${PASS_FAIL_LABEL})` : ""}`;
+
+function fmtLine(i: number, s: Scored, taskId: string | null, long: boolean, passFail = false): string {
   const c = CATALOG[s.id];
   const t = taskId ? s.tasks?.[taskId] : undefined;
   const where = `${c?.runs ?? "?"} · ${c?.cost ?? ""}`;
+  // Pass/fail suites (e.g. todos) have no WER or key terms: show runs passed instead.
+  if (passFail) {
+    if (taskId && t) {
+      const failed = t.runs_completed.startsWith("0/");
+      return (
+        `${i}. ${s.name} [id: ${s.id}] — ${taskId} ${failed ? "0/10" : `${t.score}/10`}, ${verdict(s, taskId)}\n` +
+        `   ${taskId}: ${fmtPassed(t.runs_completed, long)} · ${fmtLatency(t.latency_s)}\n` +
+        `   suite: ${s.score}/10 · ${fmtCi(s.ci95, long)} · tasks: ${taskCells(s)}\n` +
+        `   ${where}`
+      );
+    }
+    return (
+      `${i}. ${s.name} [id: ${s.id}] — suite ${s.score}/10, ${verdict(s, taskId)}\n` +
+      `   suite: ${fmtCi(s.ci95, long)} · ${fmtPassed(s.runs_completed, long)} · ${fmtLatency(s.latency_s)}\n` +
+      `   tasks: ${taskCells(s)}\n` +
+      `   ${where}`
+    );
+  }
   if (taskId && t) {
     const failed = t.runs_completed.startsWith("0/");
     return (
@@ -229,7 +270,7 @@ server.tool(
             `Per-server metrics below are for ${taskId}; the "suite" line covers all ${suite.tasks?.length ?? 1} tasks.`
         : "Ranked by overall suite score (weighted mean over all tasks); metrics below are suite-wide.",
       "",
-      ...ranked.map((s, i) => fmtLine(i + 1, s, taskId, i === 0)),
+      ...ranked.map((s, i) => fmtLine(i + 1, s, taskId, i === 0, suite.scoring === "pass_fail")),
     );
 
     // Ties: groups of adjacent servers that are statistically indistinguishable.
@@ -305,15 +346,19 @@ server.tool(
           `Repo: ${s.repo || c?.repo || "n/a"} · backend: ${s.backend || "n/a"}`,
           `Category: ${suite.task_category} (suite ${suite.suite}) · rank ${rank}/${suite.servers.length}`,
           `Suite score: ${s.score}/10 (${fmtCi(s.ci95, true)}; run range ${s.score_range[0]}–${s.score_range[1]}) — ${verdict(s)}`,
-          `Suite-wide: runs completed ${s.runs_completed} · ${fmtWer(s.wer, true)} · ${fmtKt(s.keyphrase_recall, true)} · avg ${fmtLatency(s.latency_s)}`,
+          suite.scoring === "pass_fail"
+            ? `Suite-wide: ${fmtPassed(s.runs_completed, true)} · avg ${fmtLatency(s.latency_s)}`
+            : `Suite-wide: runs completed ${s.runs_completed} · ${fmtWer(s.wer, true)} · ${fmtKt(s.keyphrase_recall, true)} · avg ${fmtLatency(s.latency_s)}`,
           s.tasks
             ? "Per task:\n" +
               Object.entries(s.tasks)
                 .map(
                   ([id, t]) =>
                     `  • ${id}: ${t.runs_completed.startsWith("0/") ? "FAILED" : `${t.score}/10`} ` +
-                    `(runs ${t.runs_completed}, WER ${t.wer ?? "n/a"}, key terms ${t.keyphrase_recall}` +
-                    `${t.latency_s != null ? `, ${t.latency_s}s` : ""})` +
+                    (suite.scoring === "pass_fail"
+                      ? `(passed ${t.runs_completed}${t.latency_s != null ? `, ${t.latency_s}s` : ""})`
+                      : `(runs ${t.runs_completed}, WER ${t.wer ?? "n/a"}, key terms ${t.keyphrase_recall}` +
+                        `${t.latency_s != null ? `, ${t.latency_s}s` : ""})`) +
                     (DIAGNOSES[s.id]?.[id] ? `\n      diagnosis: ${DIAGNOSES[s.id][id]}` : "") +
                     (t.errors.length ? `\n      error: ${t.errors[0]}` : "") +
                     (t.missed_phrases.length && !t.runs_completed.startsWith("0/")
@@ -330,7 +375,7 @@ server.tool(
           `Method: ${suite.method}`,
           `Scored at: ${suite.scored_at}`,
           "",
-          `Sample output: ${s.sample_transcript || "(none)"}`,
+          suite.scoring === "pass_fail" ? "" : `Sample output: ${s.sample_transcript || "(none)"}`,
           "",
           c ? `Install: ${c.install}\nRequires: ${c.requires.join("; ")}\nMCP config: ${JSON.stringify(c.mcp_config)}` : "",
         ]
