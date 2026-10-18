@@ -12,10 +12,12 @@ import type { Scored, Suite } from "./src/types.js";
 const server = new MCPServer({
   name: "agentpacts",
   title: "AgentPacts",
-  version: "0.1.0",
+  version: "0.2.0",
   description:
-    "Before you pick an MCP server for a task, ask AgentPacts. Scores come from controlled bake-offs " +
-    "(fixed task suite, fixed harness, ground-truth verification, multiple runs), not vendor descriptions.",
+    "Agents choose tools on outcomes, not vibes. AgentPacts is the independent lab that actually runs AI tools: " +
+    "fixed tasks, public traces, scores that are never for sale. Ask it before picking an MCP server for a task.",
+  websiteUrl: "https://agentpacts.com",
+  icons: [{ src: "agentpacts-icon.png", mimeType: "image/png", sizes: ["64x64"] }],
 });
 
 // Practical-equivalence margin: below this gap, two scores are a tie even if
